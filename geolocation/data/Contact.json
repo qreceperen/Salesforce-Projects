@@ -1,0 +1,164 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef1"
+            },
+            "Name": "Jane Grey",
+            "Email": "jane_gray@uoa.edu"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef2"
+            },
+            "Name": "Arthur Song",
+            "Email": "asong@uog.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef3"
+            },
+            "Name": "Ashley James",
+            "Email": "ajames@uog.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef4"
+            },
+            "Name": "Tom Ripley",
+            "Email": "tripley@uog.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef5"
+            },
+            "Name": "Liz D'Cruz",
+            "Email": "ldcruz@uog.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef6"
+            },
+            "Name": "Edna Frank",
+            "Email": "efrank@genepoint.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef7"
+            },
+            "Name": "Avi Green",
+            "Email": "agreen@uog.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef8"
+            },
+            "Name": "Siddartha Nedaerk",
+            "Email": null
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef9"
+            },
+            "Name": "Jake Llorrac",
+            "Email": null
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef10"
+            },
+            "Name": "Rose Gonzalez",
+            "Email": "rose@edge.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef11"
+            },
+            "Name": "Sean Forbes",
+            "Email": "sean@edge.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef12"
+            },
+            "Name": "Jack Rogers",
+            "Email": "jrogers@burlington.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef13"
+            },
+            "Name": "Pat Stumuller",
+            "Email": "pat@pyramid.net"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef14"
+            },
+            "Name": "Andy Young",
+            "Email": "a_young@dickenson.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef15"
+            },
+            "Name": "Tim Barr",
+            "Email": "barr_tim@grandhotels.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef16"
+            },
+            "Name": "John Bond",
+            "Email": "bond_john@grandhotels.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef17"
+            },
+            "Name": "Stella Pavlova",
+            "Email": "spavlova@uog.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef18"
+            },
+            "Name": "Lauren Boyle",
+            "Email": "lboyle@uog.com"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef19"
+            },
+            "Name": "Babara Levy",
+            "Email": "b.levy@expressl&t.net"
+        },
+        {
+            "attributes": {
+                "type": "Contact",
+                "referenceId": "ContactRef20"
+            },
+            "Name": "Josh Davis",
+            "Email": "j.davis@expressl&t.net"
+        }
+    ]
+}
