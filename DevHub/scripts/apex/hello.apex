@@ -5,6 +5,10 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-string tempvar = 'Enter_your_name_here';
-System.debug('Hello World!');
-System.debug('My name is ' + tempvar);
+// currencyAPI.getCurrencyData('USD', 'TRY', 300);
+
+API_Configuration__mdt apiLayer = API_Configuration__mdt.getInstance(
+  'apiLayerCurrency'
+);
+string endPoint = apiLayer.API_Endpoint__c;
+string apiKey = apiLayer.API_Key__c;
