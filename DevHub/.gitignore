@@ -45,4 +45,4 @@ $RECYCLE.BIN/
 **/venv/
 
 # Script / apex
-*.apex
+**.apex
