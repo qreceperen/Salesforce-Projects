@@ -5,5 +5,4 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-currencyAPI.getCurrencyData('USD', 'TRY', 300);
-
+currencyAPI.getCurrencyData('USD', 'TRY', 500);
