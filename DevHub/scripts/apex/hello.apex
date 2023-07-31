@@ -5,4 +5,12 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-currencyAPI.getCurrencyData('USD', 'TRY', 500);
+// currencyAPI.getCurrencyData('USD', 'TRY', 500);
+currencyAPI.Request request = new currencyAPI.Request();
+request.currencyFrom = 'USD';
+request.currencyTo = 'TRY';
+request.amount = 500;
+
+List<currencyAPI.Request> requests = new List<currencyAPI.Request>{request};
+List<Decimal> results = currencyAPI.getCurrencyDataFlow(requests);
+System.debug('Results: ' + results);
