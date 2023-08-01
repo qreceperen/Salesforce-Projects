@@ -2,41 +2,10 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
     <types>
-        <members>currencyAPI</members>
-        <members>CurrencyAPITest</members>
-        <members>currencyData</members>
-        <members>HttpCalloutMockImpl</members>
-        <name>ApexClass</name>
-    </types>
-    <types>
-        <members>API_Configuration__mdt.API_Endpoint__c</members>
-        <members>API_Configuration__mdt.API_Key__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
-        <members>API_Configuration__mdt-API_Configuration Layout</members>
-        <name>Layout</name>
-    </types>
-    <types>
-        <members>API_Configuration__mdt</members>
-        <name>CustomObject</name>
-    </types>
-    <types>
-        <members>API_Configuration.apiLayerCurrency</members>
-        <name>CustomMetadata</name>
-    </types>
-    <types>
-        <members>RCP_Currency_Converter</members>
-        <name>Flow</name>
-    </types>
-    <types>
-        <members>RCP_Currency_App</members>
-        <name>CustomApplication</name>
-    </types>
-    <types>
-        <members>RCP_Currency_App_UtilityBar</members>
         <members>Home_Page_Default</members>
         <name>FlexiPage</name>
     </types>
+
+    
     <version>57.0</version>
 </Package>

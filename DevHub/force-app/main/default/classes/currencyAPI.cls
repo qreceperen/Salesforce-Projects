@@ -23,6 +23,7 @@ public with sharing class currencyAPI {
   public static Double getCurrencyData (String currencyFrom, String currencyTo, Integer amount) {
     API_Configuration__mdt apiLayer = API_Configuration__mdt.getInstance('apiLayerCurrency');
     String endPoint = apiLayer.API_Endpoint__c + '?to=' + currencyTo + '&from=' + currencyFrom + '&amount=' + amount;
+    
     Http http = new Http();
     HttpRequest request = new HttpRequest();
     request.setEndpoint(endPoint);
