@@ -1,0 +1,23 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="utility:money" size="small"></lightning-icon>
+            Card Title
+        </h3>
+        <lightning-input label="Convert From" type="text" onchange={handleCurrencyFromChange}></lightning-input>
+        <lightning-input label="Convert To" type="text" onchange={handleCurrencyToChange}></lightning-input>
+        <lightning-input label="Amount" type="number" onchange={handleAmountChange}></lightning-input>
+
+        <div class="slds-card">
+            <div class="slds-p-around_medium">
+                <lightning-button variant="brand" label="Convert" title="Convert" onclick={handleConvert}
+                    class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </div>
+        <div class="slds-card">
+            <div class="slds-p-around_medium">
+                <p>Result: {result}</p>
+            </div>
+        </div>
+    </lightning-card>
+</template>

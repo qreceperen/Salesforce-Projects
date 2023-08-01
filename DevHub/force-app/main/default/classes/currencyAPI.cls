@@ -19,7 +19,7 @@ public with sharing class currencyAPI {
     return results;
   }
 
-
+  @AuraEnabled(cacheable=true)
   public static Double getCurrencyData (String currencyFrom, String currencyTo, Integer amount) {
     API_Configuration__mdt apiLayer = API_Configuration__mdt.getInstance('apiLayerCurrency');
     String endPoint = apiLayer.API_Endpoint__c + '?to=' + currencyTo + '&from=' + currencyFrom + '&amount=' + amount;
