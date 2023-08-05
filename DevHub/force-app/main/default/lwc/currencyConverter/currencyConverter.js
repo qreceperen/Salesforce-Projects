@@ -23,9 +23,15 @@ export default class CurrencyConverter extends LightningElement {
         .then(data=> {
             this.result = data;
         })
-        .catch(error=>{
-            console.error('Error is getting conversation rate: ', error);
-        })
+        .catch(error => {
+            let message = 'Unknown error';
+            if (Array.isArray(error.body)) {
+                message = error.body.map(e => e.message).join(', ');
+            } else if (typeof error.body.message === 'string') {
+                message = error.body.message;
+            }
+            console.error('Error in getting conversion rate:', message);
+        });
     }
  
 }
