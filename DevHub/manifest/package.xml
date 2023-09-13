@@ -2,10 +2,21 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
 
     <types>
-        <members>currencyAppAccess</members>
-        <name>PermissionSet</name>
+        <members>Event_Comms</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Event_Comms</members>
+        <name>FlexiPage</name>
+    </types>
+
+     <types>
+        <members>numerator</members>
+        <members>button</members>
+        <members>controls</members>
+        <name>LightningComponentBundle</name>
     </types>
 
     
-    <version>57.0</version>
+    <version>58.0</version>
 </Package>
