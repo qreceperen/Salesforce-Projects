@@ -1,17 +1,11 @@
 public with sharing class ContactController {
   @AuraEnabled(cacheable=true)
-  public static List<Contact> getContacts() {
-    try {
-      return [
-        SELECT FirstName, LastName, Email
-        FROM Contact
-        WITH SECURITY_ENFORCED
-        ORDER BY FirstName
-      ];
-    } catch (Exception e) {
-      throw new AuraHandledException(
-        'An error occurred while fetching contacts: ' + e.getMessage()
-      );
-    }
+  public static List<Contact> getContactList() {
+    return [
+      SELECT Id, Name, FirstName, LastName, Title, Phone, Email
+      FROM Contact
+      WITH USER_MODE
+      LIMIT 10
+    ];
   }
 }
