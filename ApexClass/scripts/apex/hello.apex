@@ -1,13 +1,11 @@
-Lead le;
-le = [
-  SELECT Id, Name, LeadSource, Industry, Company, NumberOfEmployees
-  FROM Lead
-  WHERE Name = 'Betty Bair'
-  LIMIT 1
-];
+List<Task> taskList;
+taskList = [SELECT Id, ActivityDate, Status FROM Task];
+for (Task t : taskList) {
+  system.debug('Date before decrement -- ' + t.ActivityDate);
+  Date updatedActivityDate;
+  updatedActivityDate = t.ActivityDate;
+  updatedActivityDate -= 1;
 
-id leadId = le.id;
-system.debug(le);
-system.debug(leadId);
-
-LeadConversationController.evaluateLeadRating(leadId);
+  system.debug('Date after decrement -- ' + updatedActivityDate);
+}
+// TaskAutomationController.updateTaskStatus(taskList);
