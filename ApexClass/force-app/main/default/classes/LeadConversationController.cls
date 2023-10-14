@@ -10,7 +10,7 @@ public with sharing class LeadConversationController {
       WITH SECURITY_ENFORCED
     ];
 
-    // Assign a rating based on arbittrary criteria
+    // Assign a rating based on arbittrary criteria add this criteria better okay
     if (leadRecord.NumberOfEmployees > 100) {
       rating = 'Hot';
     } else if (leadRecord.Industry == 'Technology') {
