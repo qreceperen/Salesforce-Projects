@@ -1,3 +1,53 @@
-Integer i = TaskChartController.getTotalTaskCount();
-
-system.debug(i);
+  SELECT
+    AccountNumber,
+    AnnualRevenue,
+    BillingAddress,
+    BillingCity,
+    BillingCountry,
+    BillingPostalCode,
+    BillingState,
+    BillingStreet,
+    CleanStatus,
+    Fax,
+    Industry,
+    Name,
+    NumberOfEmployees,
+    ShippingAddress,
+    ShippingCity,
+    ShippingCountry,
+    ShippingPostalCode,
+    ShippingState,
+    ShippingStreet,
+    Sic,
+    Type,
+    Website,
+    (
+      SELECT
+        CleanStatus,
+        Department,
+        Email,
+        FirstName,
+        Languages__c,
+        LastName,
+        LeadSource,
+        Level__c,
+        MailingAddress,
+        MailingCity,
+        MailingCountry,
+        MailingPostalCode,
+        MailingState,
+        MailingStreet,
+        Name,
+        OtherAddress,
+        OtherCity,
+        OtherCountry,
+        OtherPhone,
+        OtherPostalCode,
+        OtherState,
+        OtherStreet,
+        Phone,
+        Salutation,
+        Title
+      FROM Contacts
+    )
+  FROM Account
