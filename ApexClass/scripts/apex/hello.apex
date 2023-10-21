@@ -1,53 +1,26 @@
-List<Account> accList = [
-  SELECT
-    AccountNumber,
-    AnnualRevenue,
-    BillingCity,
-    BillingCountry,
-    BillingPostalCode,
-    BillingState,
-    BillingStreet,
-    CleanStatus,
-    Fax,
-    Industry,
-    Name,
-    NumberOfEmployees,
-    ShippingCity,
-    ShippingCountry,
-    ShippingPostalCode,
-    ShippingState,
-    ShippingStreet,
-    Sic,
-    Type,
-    Website,
-    (
-      SELECT
-        CleanStatus,
-        Department,
-        Email,
-        FirstName,
-        LastName,
-        LeadSource,
-        MailingCity,
-        MailingCountry,
-        MailingPostalCode,
-        MailingState,
-        MailingStreet,
-        Name,
-        OtherCity,
-        OtherCountry,
-        OtherPhone,
-        OtherPostalCode,
-        OtherState,
-        OtherStreet,
-        Phone,
-        Salutation,
-        Title
-      FROM Contacts
-    )
-  FROM Account
-];
+Map<Id, List<Contact>> returnedValue;
 
-for (Account acc : accList) {
-  system.debug(acc);
-}
+returnedValue = RelationshipManager.retrieveAccounts();
+
+// system.debug(returnedValue);
+
+List<Contact> conList;
+conList = returnedValue.values();
+system.debug(conList);
+
+// for (Id accountId : returnedValue.keySet()) {
+//   System.debug('Account ID: ' + accountId);
+//   List<Contact> contacts = returnedValue.get(accountId);
+
+//   for (Contact contact : contacts) {
+//   }
+//   System.debug(
+//     'Contact ID: ' +
+//     contact.Id +
+//     ', First Name: ' +
+//     contact.FirstName +
+//     ', Last Name: ' +
+//     contact.LastName
+//   );
+// }
+
