@@ -1,28 +1,51 @@
 @isTest
 public with sharing class RelationshipManagerTest {
-  @TestSetup
-  static void makeData() {
-    // Create 10 Accounts with Contacts(1 contact for each Account)
-    List<Account> accountList;
-    List<Contact> contactList;
+  @isTest
+  static void retrieveAccount_TestAccountsWithContacts() {
+    Map<Id, List<Contact>> createTenAccWithOneConEach;
+    Map<Id, List<Contact>> accountsMapReturned;
 
-    accountList = new List<Account>();
-    for (Integer i = 0; i < 10; i++) {
-      Account singleAcc;
-      singleAcc = new Account();
-      singleAcc.Name = 'Test Account ' + i;
-      accountList.add(singleAcc);
-    }
-    insert accountList;
+    // Create 10 Account with One Contact Each
+    createTenAccWithOneConEach = DataFactory.createAccounts(10, 1);
 
-    contactList = new List<Contact>();
-    for (Account acc : accountList) {
-      Contact singleCon;
-      singleCon = new Contact();
-      singleCon.LastName = 'Test Contact' + acc.Name;
-      singleCon.AccountId = acc.id;
-      contactList.add(singleCon);
+    // Execute method
+    test.startTest();
+    accountsMapReturned = RelationshipManager.retrieveAccounts();
+    test.stopTest();
+
+    // Assert Result we need to have 10 Account Retrieved
+    // is 10 Account Returned?
+    Assert.areEqual(
+      10,
+      accountsMapReturned.size(),
+      'Unexpected number of accounts returned'
+    );
+
+    // Assert that each account has exactly one contact
+    for (Id accountId : accountsMapReturned.keySet()) {
+      Assert.areEqual(
+        1,
+        accountsMapReturned.get(accountId).size(),
+        'Unexpected number of contacts for account ' + accountId
+      );
     }
-    insert contactList;
+  }
+
+  @isTest
+  static void retrieveAccount_TestWithoutAccount() {
+    // Do not add Any Data
+
+    // Execute code
+    test.startTest();
+    Map<Id, List<Contact>> accountsMapReturned;
+    accountsMapReturned = RelationshipManager.retrieveAccounts();
+    test.stopTest();
+
+    // Assert
+    Assert.areEqual(
+      0,
+      accountsMapReturned.size(),
+      'Unexpected number of Accounts Returned '
+    );
   }
 }
