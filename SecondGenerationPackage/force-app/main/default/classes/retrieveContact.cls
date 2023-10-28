@@ -4,4 +4,8 @@ public with sharing class retrieveContact {
     contacts = [SELECT Id FROM Contact];
     return contacts;
   }
+
+  public static void allAccounts() {
+    Account acc = [SELECT Id FROM Account LIMIT 1];
+  }
 }
