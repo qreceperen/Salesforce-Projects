@@ -4,5 +4,5 @@
     <eventType>HighVolume</eventType>
     <label>Apex Error Event</label>
     <pluralLabel>Apex Error Events</pluralLabel>
-    <publishBehavior>PublishAfterCommit</publishBehavior>
+    <publishBehavior>PublishImmediately</publishBehavior>
 </CustomObject>
