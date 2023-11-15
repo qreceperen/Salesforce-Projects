@@ -1,5 +1,12 @@
-trigger OpportunityLifeCycleTrigger on Opportunity(after insert) {
+trigger OpportunityLifeCycleTrigger on Opportunity(after insert, after update) {
   if (Trigger.isAfter && Trigger.isInsert) {
-    OpportunityLifecycleTriggerHandler.handleInsert(Trigger.new);
+    OpportunityLifecycleTriggerHandler.handleAfterInsert(Trigger.new);
+  }
+
+  if (Trigger.isAfter && Trigger.isUpdate) {
+    OpportunityLifecycleTriggerHandler.handleStageChange(
+      Trigger.new,
+      Trigger.oldMap
+    );
   }
 }

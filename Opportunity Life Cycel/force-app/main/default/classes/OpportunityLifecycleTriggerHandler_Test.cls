@@ -28,4 +28,27 @@ public with sharing class OpportunityLifecycleTriggerHandler_Test {
       'Created Task Subject name does not match'
     );
   }
+  @isTest
+  static void handleInsert_BulkOpportunity() {
+    // Local Variables
+    List<Opportunity> multiOpp;
+    List<Task> taskList;
+    // Data
+
+    multiOpp = new List<Opportunity>();
+    for (Integer i = 0; i < 1000; i++) {
+      Opportunity singleOpp = new Opportunity(
+        Name = 'Test Single Opportunity' + i,
+        StageName = 'Prospecting',
+        CloseDate = system.date.today().addDays(30)
+      );
+      multiOpp.add(singleOpp);
+    }
+    insert multiOpp;
+
+    // Assert
+
+    taskList = [SELECT id FROM Task];
+    Assert.areEqual(1000, taskList.size(), 'Number of task is not correct');
+  }
 }
