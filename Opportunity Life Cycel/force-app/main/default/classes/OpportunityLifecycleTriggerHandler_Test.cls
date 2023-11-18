@@ -91,12 +91,5 @@ public with sharing class OpportunityLifecycleTriggerHandler_Test {
       taskList[0].Description,
       'Task Description is NULL'
     );
-
-    // expectedDescription = 'Stage is changed from Prospecting ---> To Qualification';
-    // Assert.areEqual(
-    //   expectedDescription,
-    //   taskList[0].Description,
-    //   'Description does not match expected content'
-    // );
   }
 }
