@@ -1,19 +1,15 @@
 trigger OpportunityLifeCycleTrigger on Opportunity(after insert, after update) {
-  if (Trigger.isAfter && Trigger.isInsert) {
-    OpportunityLifecycleTriggerHandler.handleAfterInsert(Trigger.new);
-  }
+  // When new opportunity is added
+  if (Trigger.isAfter) {
+    if (Trigger.isInsert) {
+      OpportunityLifecycleTriggerHandler.handleAfterInsert(Trigger.new);
+    }
 
-  if (Trigger.isAfter && Trigger.isUpdate) {
-    // Local Variables
-    List<Opportunity> 
-    for (Opportunity opp : Trigger.New) {
-      // Call Handler if Opportunity stage is changed;
-      if (!opp.StageName.equals(Trigger.oldMap.get(opp.id).StageName)) {
-        OpportunityLifecycleTriggerHandler.handleStageChange(
-          Trigger.new,
-          Trigger.oldMap
-        );
-      }
+    if (Trigger.isUpdate) {
+      OpportunityLifecycleTriggerHandler.handleUpdate(
+        Trigger.new,
+        Trigger.oldMap
+      );
     }
   }
 }
