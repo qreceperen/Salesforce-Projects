@@ -39,20 +39,19 @@ public with sharing class OpportunityLifecycleTriggerHandler {
       if (opp.Amount != triggerOldMap.get(opp.id).Amount) {
         oppsWithAmountChange.add(opp);
       }
-
-      // Update Opportunity with Stage Changed
-      if (!oppsWithStageChange.isEmpty()) {
-        OpportunityLifecycleTriggerHandler.handleStageChange(
-          oppsWithStageChange,
-          triggerOldMap
-        );
-      }
-      if (!oppsWithAmountChange.isEmpty()) {
-        OpportunityLifecycleTriggerHandler.handleAmountChange(
-          oppsWithAmountChange,
-          triggerOldMap
-        );
-      }
+    }
+    // Update Opportunity with Stage Changed
+    if (!oppsWithStageChange.isEmpty()) {
+      OpportunityLifecycleTriggerHandler.handleStageChange(
+        oppsWithStageChange,
+        triggerOldMap
+      );
+    }
+    if (!oppsWithAmountChange.isEmpty()) {
+      OpportunityLifecycleTriggerHandler.handleAmountChange(
+        oppsWithAmountChange,
+        triggerOldMap
+      );
     }
   }
   public static void handleStageChange(

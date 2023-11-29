@@ -2,11 +2,22 @@
   "packageDirectories": [
     {
       "path": "force-app",
-      "default": true
+      "default": true,
+      "package": "oppLifeCyle",
+      "versionName": "ver 1.0",
+      "versionNumber": "1.1.0.NEXT",
+      "versionDescription": "Updates Opportunities"
     }
   ],
   "name": "Opportunity Life Cycel",
   "namespace": "",
   "sfdcLoginUrl": "https://login.salesforce.com",
-  "sourceApiVersion": "58.0"
+  "sourceApiVersion": "58.0",
+  "packageAliases": {
+    "oppLifeCyle": "0Ho8b000000sXzUCAU",
+    "oppLifeCyle@0.1.0-1": "04t8b000001RwtcAAC",
+    "oppLifeCyle@0.1.0-2": "04t8b000001RwthAAC",
+    "oppLifeCyle@0.1.0-3": "04t8b000001RwtmAAC",
+    "oppLifeCyle@1.1.0-1": "04t8b000001RwtrAAC"
+  }
 }

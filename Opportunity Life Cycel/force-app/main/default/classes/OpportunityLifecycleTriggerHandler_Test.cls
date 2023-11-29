@@ -92,4 +92,82 @@ public with sharing class OpportunityLifecycleTriggerHandler_Test {
       'Task Description is NULL'
     );
   }
+  @isTest
+  static void updateOppWithoutAmountAndStageTest() {
+    // Local Variables
+    Opportunity singleOpp;
+    Opportunity returnedOpp;
+    List<Task> taskList;
+
+    // Data
+    // Add an Opportunity
+    singleOpp = new Opportunity(
+      Name = 'Test 1',
+      StageName = 'Prospecting',
+      CloseDate = system.date.today().addDays(30)
+    );
+    insert singleOpp;
+    //Delete all added Task
+    taskList = [SELECT Id FROM Task];
+    delete taskList;
+
+    returnedOpp = [
+      SELECT Id, StageName
+      FROM Opportunity
+      WHERE Id = :singleOpp.id
+      LIMIT 1
+    ];
+
+    returnedOpp.Name = 'UpdatedName';
+    update returnedOpp;
+
+    //Assert
+    // Task shoul not be created
+    taskList = [SELECT Id FROM Task];
+    Assert.isTrue(
+      taskList.size() < 1,
+      'Task Should not be created for Name change updates'
+    );
+  }
+  @isTest
+  static void handleAmountChangeTest_UpdateAmountSingleOpportunity() {
+    // Local Variables
+    Opportunity singleOpp;
+    Opportunity returnedOpp;
+    List<Task> taskList;
+    String expectedDescription;
+
+    // Data
+    // Add an Opportunity
+    singleOpp = new Opportunity(
+      Name = 'Test 1',
+      Amount = 100,
+      StageName = 'Qualification',
+      CloseDate = system.date.today().addDays(30)
+    );
+    insert singleOpp;
+    //Delete all added Task
+    taskList = [SELECT Id FROM Task];
+    delete taskList;
+
+    //Update Opportunity to Run Trigger
+    returnedOpp = [
+      SELECT Id, Amount
+      FROM Opportunity
+      WHERE Id = :singleOpp.id
+      LIMIT 1
+    ];
+
+    returnedOpp.Amount = 250;
+    update returnedOpp;
+
+    // Assert Task Created
+    taskList = [SELECT Id, Subject, Description FROM Task];
+    Assert.isTrue(taskList.size() > 0, 'No task is added');
+    Assert.areNotEqual(
+      null,
+      taskList[0].Description,
+      'Task Description is NULL'
+    );
+  }
 }
