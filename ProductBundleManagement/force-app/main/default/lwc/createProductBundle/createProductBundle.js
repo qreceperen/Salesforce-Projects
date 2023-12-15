@@ -29,14 +29,21 @@ export default class CreateProductBundle extends LightningElement {
 
   handleRowSelection(event) {
     const selectedRows = event.detail.selectedRows;
-    console.log("Selected Rowsssssss:", selectedRows);
-    this.selectedProductIds = selectedRows.map((row) => row.id);
+    this.selectedProductIds = selectedRows.map((row) => row.Id);
   }
 
   handleCreateBundle() {
     // Assuming createBundle is your method to create the bundle
+    console.log(
+      "Creating bundle with: ",
+      this.bundleName,
+      this.bundleDescription,
+      this.selectedProductIds
+    );
     createBundle({
-      /* parameters */
+      productBundleName: this.bundleName,
+      productBundleDescription: this.bundleDescription,
+      productIds: this.selectedProductIds
     })
       .then(() => {
         this.dispatchEvent(
