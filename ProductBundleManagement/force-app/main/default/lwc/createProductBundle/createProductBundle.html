@@ -1,0 +1,14 @@
+<template>
+    <lightning-card title="Create Product Bundle" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+            <lightning-input label="Bundle Name" value={bundleName} onchange={handleNameChange}></lightning-input>
+            <lightning-textarea label="Bundle Description" value={bundleDescription}
+                onchange={handleDescriptionChange}></lightning-textarea>
+            <lightning-datatable data={products} columns={columns} key-field="id"
+                onrowselection={handleRowSelection}></lightning-datatable>
+
+            <lightning-button label="Create Bundle" variant="brand" onclick={handleCreateBundle}
+                class="slds-m-top_medium"></lightning-button>
+        </div>
+    </lightning-card>
+</template>

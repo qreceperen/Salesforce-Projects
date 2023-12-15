@@ -1,4 +1,5 @@
 public with sharing class TestDataFactory {
+  // Create products
   public static List<Id> productIds(Integer numberOfProducts) {
     // Local Variable
     List<Id> productIds;

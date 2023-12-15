@@ -1,5 +1,6 @@
 public with sharing class ProductBundleManager {
   // Creates a new product bundle and associates products to it.
+  @AuraEnabled
   public static void createBundle(
     String productBundleName,
     String productBundleDescription,
@@ -45,6 +46,10 @@ public with sharing class ProductBundleManager {
     }
   }
 
-  public static void listBundles() {
+  @AuraEnabled(cacheable=true)
+  public static List<Product2> getAvailableProducts() {
+    List<Product2> productList;
+    productList = [SELECT Id, Name FROM Product2 WHERE IsActive = TRUE];
+    return productList;
   }
 }
