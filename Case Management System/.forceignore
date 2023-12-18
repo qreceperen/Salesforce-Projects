@@ -13,3 +13,4 @@ package.xml
 
 # scripts
 DataOperations.apex
+**/.apex
