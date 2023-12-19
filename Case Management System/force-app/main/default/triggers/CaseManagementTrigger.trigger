@@ -1,6 +1,6 @@
-trigger CaseManagementTrigger on Case(before insert) {
-  if (Trigger.isBefore && Trigger.isInsert) {
-    system.debug(Trigger.new);
+trigger CaseManagementTrigger on Case(after insert) {
+  if (Trigger.isAfter && Trigger.isInsert) {
+    caseAssignmentHandler.determineAssignmentCriteria(Trigger.new);
   }
   // Logic to determine case assignment criteria goes here
 
