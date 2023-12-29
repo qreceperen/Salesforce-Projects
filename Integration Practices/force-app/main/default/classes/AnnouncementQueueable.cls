@@ -14,7 +14,7 @@ public class AnnouncementQueueable implements Queueable {
    * @name postAnnouncements
    * @description This method is provided for you to facilitate the Super Badge
    **/
-  public static void PostAnnouncements(
+  public static void   PostAnnouncements(
     List<ConnectApi.AnnouncementInput> announcements
   ) {
     while (announcements.size() > 0) {
