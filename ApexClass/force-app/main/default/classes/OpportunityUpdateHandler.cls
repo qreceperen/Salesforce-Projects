@@ -32,9 +32,11 @@ public with sharing class OpportunityUpdateHandler {
         );
         tasksToCreate.add(newTask);
       }
+      // Update the map with the latest Probability
+      probabilityOverrides.put(newOpp.id, newOpp.Probability);
     }
     // Insert Task
-    if (!taskToCreate.isEmpty()) {
+    if (!tasksToCreate.isEmpty()) {
       insert tasksToCreate;
     }
   }
