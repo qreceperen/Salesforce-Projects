@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>DMLUtils</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>DMLUtilsTest</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <description>Provides full access to the MTB DMLUtils Utility</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>MTB DML Utilities User</label>
+    <license>Salesforce</license>
+</PermissionSet>

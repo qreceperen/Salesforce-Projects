@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSetGroup xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Contains permissions for all tools in the MTB Apex Library Package</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>MTB Apex Library</label>
+    <permissionSets>MTB_DML_Utilities_User</permissionSets>
+    <permissionSets>MTB_Error_Log_User</permissionSets>
+    <status>Updated</status>
+</PermissionSetGroup>
