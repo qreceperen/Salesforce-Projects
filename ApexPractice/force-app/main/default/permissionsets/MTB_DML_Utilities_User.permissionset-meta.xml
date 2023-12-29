@@ -9,6 +9,11 @@
         <enabled>true</enabled>
     </classAccesses>
     <description>Provides full access to the MTB DMLUtils Utility</description>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Account.Test_Checkbox__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>MTB DML Utilities User</label>
     <license>Salesforce</license>

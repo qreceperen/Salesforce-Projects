@@ -14,6 +14,7 @@
 		<name>ApexTrigger</name>
 	</types>
 	<types>
+		<members>Account.Test_Checkbox__c</members>
 		<members>Error_Log_Event__e.Bulk_Errors_JSON__c</members>
 		<members>Error_Log__c.Class__c</members>
 		<members>Error_Log__c.Error_Message__c</members>
@@ -35,6 +36,10 @@
 		<name>CustomTab</name>
 	</types>
 	<types>
+		<members>Account-Account Layout</members>
+		<name>Layout</name>
+	</types>
+	<types>
 		<members>MTB_DML_Utilities_User</members>
 		<members>MTB_Error_Log_User</members>
 		<name>PermissionSet</name>
@@ -42,6 +47,10 @@
 	<types>
 		<members>MTB_Apex_Library</members>
 		<name>PermissionSetGroup</name>
+	</types>
+	<types>
+		<members>Admin</members>
+		<name>Profile</name>
 	</types>
 	<version>58.0</version>
 </Package>
