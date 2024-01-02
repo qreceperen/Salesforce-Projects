@@ -1,4 +1,6 @@
+// This is Handler class.
 public with sharing class AccountTestCheckbox {
+  z
   public static void setCheckboxOnInsert(List<Account> accounts) {
     for (Account account : accounts) {
       if (account.name == 'Perform Apex Test Checkbox Test') {
