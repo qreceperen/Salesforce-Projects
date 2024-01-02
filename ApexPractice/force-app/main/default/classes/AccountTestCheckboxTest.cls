@@ -158,4 +158,82 @@ public with sharing class AccountTestCheckboxTest {
       '200 Accounts should be returned within Test Checbox = false but NOT'
     );
   }
+  @isTest
+  static void positiveUpdateTest() {
+    // Local Variables
+    List<Account> accounts;
+    Account retrievedAccount;
+
+    // Setup test Data
+    // Add Account that name is 'NOT Perform Apex Test Checkbox Test' and update to 'Perform Apex Test Checkbox Test'
+    accounts = AccountTriggerFactory.createAccount(
+      'NOT Perform Apex Test Checkbox Test',
+      false,
+      1
+    );
+    DMLUtils.doOperate(DMLUtils.DMLOperation.DO_INSERT, accounts);
+
+    // Execute Update Account
+    for (Account acc : accounts) {
+      acc.name = 'Perform Apex Test Checkbox Test';
+    }
+
+    Test.startTest();
+    DMLUtils.doOperate(DMLUtils.DMLOperation.DO_UPDATE, accounts); // TDD Test Fail Before Trigger
+    Test.stopTest();
+
+    // Retrieve Account
+    retrievedAccount = [
+      SELECT Test_Checkbox__c
+      FROM Account
+      WHERE Id = :accounts[0].id
+      LIMIT 1
+    ];
+
+    // Assert
+    Assert.areEqual(
+      true,
+      retrievedAccount.Test_Checkbox__c,
+      'Checkbox should be true when Name is "Perform Test Checkbox Test" '
+    );
+  }
+  @isTest
+  static void negativeUpdateTest() {
+    // Local Variables
+    List<Account> accounts;
+    Account retrievedAccount;
+
+    // Setup test Data
+    // Add Account that name is 'NOT Perform Apex Test Checkbox Test' and update to 'Perform Apex Test Checkbox Test'
+    accounts = AccountTriggerFactory.createAccount(
+      'NOT Perform Apex Test Checkbox Test',
+      false,
+      1
+    );
+    DMLUtils.doOperate(DMLUtils.DMLOperation.DO_INSERT, accounts);
+
+    // Execute Update Account
+    for (Account acc : accounts) {
+      acc.name = 'Perform Apex Test Checkbox Test UPDATED';
+    }
+
+    Test.startTest();
+    DMLUtils.doOperate(DMLUtils.DMLOperation.DO_UPDATE, accounts); // TDD Test Fail Before Trigger
+    Test.stopTest();
+
+    // Retrieve Account
+    retrievedAccount = [
+      SELECT Test_Checkbox__c
+      FROM Account
+      WHERE Id = :accounts[0].id
+      LIMIT 1
+    ];
+
+    // Assert
+    Assert.areEqual(
+      false,
+      retrievedAccount.Test_Checkbox__c,
+      'Checkbox should be false when Name is updated from "NOT Perform Apex Test Checkbox Test" to "Perform Apex Test Checkbox Test UPDATED" '
+    );
+  }
 }
