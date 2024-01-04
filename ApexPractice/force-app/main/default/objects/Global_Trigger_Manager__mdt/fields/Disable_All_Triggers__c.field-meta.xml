@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Disable_All_Triggers__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>It disables all trigger execution when it is checked</description>
+    <externalId>false</externalId>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Disable All Triggers</label>
+    <type>Checkbox</type>
+</CustomField>
