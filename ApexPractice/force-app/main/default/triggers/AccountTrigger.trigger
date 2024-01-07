@@ -1,8 +1,15 @@
 trigger AccountTrigger on Account(before insert, before update) {
+  // Local Variables
+  AccountTestCheckbox handler;
+  Global_Trigger_Manager__mdt triggerSettings;
+
   // Retrieve Custom metadata
-  Global_Trigger_Manager__mdt triggerSettings = Global_Trigger_Manager__mdt.getInstance(
+  triggerSettings = Global_Trigger_Manager__mdt.getInstance(
     'GlobalTriggerSwitch'
   );
+
+  // Instantiate the handler class with Trigger.new
+  handler = new AccountTestCheckbox(Trigger.new);
 
   if (triggerSettings != null && triggerSettings.Disable_All_Triggers__c) {
     return; // exit the trigger without further executin nothing returns.
@@ -10,10 +17,10 @@ trigger AccountTrigger on Account(before insert, before update) {
 
   if (Trigger.isBefore) {
     if (Trigger.isInsert) {
-      AccountTestCheckbox.setCheckboxOnInsert(Trigger.new);
+      handler.handleInsert();
     }
     if (Trigger.isUpdate) {
-      AccountTestCheckbox.setCheckboxOnUpdate(Trigger.New);
+      handler.handleUpdate();
     }
   }
 
