@@ -1,0 +1,18 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card title="Tasks Associated with Account" icon-name="standard:task">
+        <div class="slds-m-around_medium">
+            <!-- lightning-datatable uses the tasks array from the JavaScript controller.
+                 The {tasks} syntax is used to bind the tasks array to the data attribute of the datatable. -->
+            <lightning-datatable
+                key-field="id"
+                data={tasks}
+                columns={columns}
+                hide-checkbox-column
+                show-row-number-column
+                resize-column-disabled
+                onrowaction={handleRowAction}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
