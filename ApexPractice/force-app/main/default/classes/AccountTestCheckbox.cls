@@ -5,6 +5,8 @@ public with sharing class AccountTestCheckbox {
   public AccountTestCheckbox(List<Account> accounts) {
     this.accounts = accounts;
   }
+
+  // QUESTION? Should i do each method private and call them from a public method or keep as is.
   public void handleInsert() {
     for (Account account : accounts) {
       if (account.name == 'Perform Apex Test Checkbox Test') {
