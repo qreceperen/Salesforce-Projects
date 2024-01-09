@@ -1,7 +1,6 @@
-// ... Other imports ...
 import { LightningElement, track } from "lwc";
 
-export default class ChatterFeed extends LightningElement {
+export default class ChatterFeedRCPVersion extends LightningElement {
   @track feedItems = [
     {
       Id: "FeedItem1",
@@ -72,12 +71,11 @@ export default class ChatterFeed extends LightningElement {
   ];
 
   toggleComments(event) {
-    const feedItemId = event.target.dataset.id;
+    const feedItemId = event.target.dataset.id; // receive item.id which is feedItem id
     const feedItem = this.feedItems.find((item) => item.Id === feedItemId);
     if (feedItem) {
-        // hide comments or not by changing show Comments to true to false and vice versa
       feedItem.showComments = !feedItem.showComments;
-      this.feedItems = [...this.feedItems]; // Trigger UI update
+      this.feedItems = [...this.feedItems];
     }
   }
 

@@ -1,19 +1,18 @@
 <template>
-    <lightning-card title="Account Chatter Feed" icon-name="utility:social">
+    <lightning-card title="Account Chatter Feed" icon-name="Utility:social">
         <div class="slds-m-around_medium">
             <template for:each={feedItems} for:item="item">
-                <div key={item.Id} class="slds-m-bottom_small">
+                <div key={item.id} class="slds-m-bottom_small">
                     <!-- Display Chatter post body and CreatedById -->
                     <p class="slds-p-horizontal_small">
                         {item.Body} - {item.CreatedById}
                     </p>
-                    <lightning-button label="Show Comments" onclick={toggleComments}
-                        data-id={item.Id}></lightning-button>
-                    <!-- Display comments and their CreatedById -->
+                    <lightning-button label="Show Comments" onclick={toggleComments} data-id={item.Id}>
+                    </lightning-button>
                     <template if:true={item.showComments}>
                         <div class="comments-section">
                             <template for:each={item.FeedComments} for:item="comment">
-                                <p key={comment.Id} class="slds-p-horizontal_small">
+                                <p key={comment.id} class="slds-p-horizontal_small">
                                     {comment.CommentBody} - {comment.CreatedById}
                                 </p>
                             </template>
