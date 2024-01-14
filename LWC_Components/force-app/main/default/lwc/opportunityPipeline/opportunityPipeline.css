@@ -1,0 +1,28 @@
+.pipeline-container {
+  margin-top: 1rem;
+}
+.pipeline-container {
+  margin-top: 1rem;
+}
+
+.stage-column {
+  border: 1px solid #dddbda;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  background-color: #f3f2f1;
+}
+
+/* 
+.stage-droppable {
+    min-height: 100px;
+    background-color: #ffffff;
+    border: 2px dashed #dddbda;
+    border-radius: .25rem;
+}
+
+.opportunity-draggable {
+    cursor: pointer;
+    border: 1px solid #dddbda;
+    border-radius: .25rem; 
+}
+*/

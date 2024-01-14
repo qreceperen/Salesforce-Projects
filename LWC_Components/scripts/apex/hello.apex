@@ -1,4 +1,3 @@
+Map<String, List<Opportunity>> oppMap = OpportunityController.getOpportunitiesByStage();
 
-List<Contact> multiCon;
-multiCon = ContactController.getContactList();
-system.debug(multiCon);
+system.debug(oppMap);

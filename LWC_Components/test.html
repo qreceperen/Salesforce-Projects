@@ -1,0 +1,35 @@
+<template>
+    <lightning-card title="Opportunity Pipeline" icon-name="standard:opportunity">
+        <div class="slds-p-horizontal_small">
+            <div class="pipeline-container slds-grid slds-wrap">
+                <!-- Iterating over stage names to create columns -->
+                <template for:each={stageNames} for:item="stage">
+                    <div key={stage} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-6">
+                        <div class="stage-column">
+                            <h3 class="slds-text-heading_small">{stage}</h3>
+                            <!-- Droppable area for each stage -->
+                            <div class="slds-box slds-box_x-small slds-m-top_small slds-p-around_medium stage-droppable"
+                                 ondragover={handleDragOver}
+                                 ondrop={handleDrop}
+                                 data-stage={stage}>
+                                 <!-- Display opportunities in this stage -->
+                                <template for:each={opportunitiesByStage[stage]} for:item="opp">
+                                    <div key={opp.Id}
+                                         class="slds-box slds-box_x-small slds-text-align_center slds-m-bottom_small opportunity-draggable"
+                                         draggable="true"
+                                         ondragstart={handleDragStart}
+                                         data-id={opp.Id}>
+                                        {opp.Name}
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>
+
+
+

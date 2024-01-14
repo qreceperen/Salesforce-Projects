@@ -1,0 +1,108 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef1"
+            },
+            "Name": "Edge Communications",
+            "Type": "Customer - Direct"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef2"
+            },
+            "Name": "Burlington Textiles Corp of America",
+            "Type": "Customer - Direct"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef3"
+            },
+            "Name": "Pyramid Construction Inc.",
+            "Type": "Customer - Channel"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef4"
+            },
+            "Name": "Dickenson plc",
+            "Type": "Customer - Channel"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef5"
+            },
+            "Name": "Grand Hotels & Resorts Ltd",
+            "Type": "Customer - Direct"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef6"
+            },
+            "Name": "United Oil & Gas Corp.",
+            "Type": "Customer - Direct"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef7"
+            },
+            "Name": "Express Logistics and Transport",
+            "Type": "Customer - Channel"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef8"
+            },
+            "Name": "University of Arizona",
+            "Type": "Customer - Direct"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef9"
+            },
+            "Name": "United Oil & Gas, UK",
+            "Type": "Customer - Direct"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef10"
+            },
+            "Name": "United Oil & Gas, Singapore",
+            "Type": "Customer - Direct"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef11"
+            },
+            "Name": "GenePoint",
+            "Type": "Customer - Channel"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef12"
+            },
+            "Name": "sForce",
+            "Type": null
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef13"
+            },
+            "Name": "Sample Account for Entitlements",
+            "Type": null
+        }
+    ]
+}
