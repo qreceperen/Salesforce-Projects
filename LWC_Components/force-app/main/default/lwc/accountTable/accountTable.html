@@ -1,23 +1,36 @@
 <!-- sldsValidatorIgnore -->
 <template>
-    <lightning-card>
-            <div
-                 class="pagination-buttons">
-                <lightning-button-icon 
-                    icon-name="utility:left" 
-                    variant="border-filled" 
-                    alternative-text="Previous" 
-                    onclick={previousPage} 
-                    disabled={isFirstPage}>
-                </lightning-button-icon>
-        
-                <lightning-button-icon 
-                    icon-name="utility:right" 
-                    variant="border-filled" 
-                    alternative-text="Next" 
-                    onclick={nextPage} 
-                    disabled={isLastPage}>
-                </lightning-button-icon>
-            </div>
-    </lightning-card>
+  <lightning-card
+    title="Account Types"
+    icon-name="standard:action_list_component"
+  >
+    <div class="slds-m-around_medium">
+      <lightning-datatable data={accounts} columns={columns} key-field="id">
+      </lightning-datatable>
+    </div>
+    <div>
+        <p class="slds-align_absolute-center">Page 11 {currentPage} of 77 {totalPages}</p>
+    </div>
+    <div class="slds-align_absolute-center">
+      <lightning-button-icon
+        icon-name="utility:left"
+        variant="border-filled"
+        alternative-text="Previous"
+        onclick={previousPage}
+        disabled={isFirstPage}
+        class="slds-m-right_xx-small"
+      >
+      </lightning-button-icon>
+
+      <lightning-button-icon
+        icon-name="utility:right"
+        variant="border-filled"
+        alternative-text="Next"
+        onclick={nextPage}
+        disabled={isLastPage}
+        class="slds-m-right_x-small"
+      >
+      </lightning-button-icon>
+    </div>
+  </lightning-card>
 </template>
