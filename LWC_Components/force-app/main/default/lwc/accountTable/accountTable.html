@@ -1,0 +1,23 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card>
+            <div
+                 class="pagination-buttons">
+                <lightning-button-icon 
+                    icon-name="utility:left" 
+                    variant="border-filled" 
+                    alternative-text="Previous" 
+                    onclick={previousPage} 
+                    disabled={isFirstPage}>
+                </lightning-button-icon>
+        
+                <lightning-button-icon 
+                    icon-name="utility:right" 
+                    variant="border-filled" 
+                    alternative-text="Next" 
+                    onclick={nextPage} 
+                    disabled={isLastPage}>
+                </lightning-button-icon>
+            </div>
+    </lightning-card>
+</template>
