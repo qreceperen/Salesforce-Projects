@@ -1,6 +1,16 @@
 <template>
-  <div style="height: 300px">
-    <lightning-datatable key-field="id" data={opportunities} columns={columns}>
-    </lightning-datatable>
-  </div>
+  <lightning-card title="Opportunity Pipeline" icon-name="standard:opportunity">
+      <div class="slds-m-around_medium">
+          <lightning-datatable
+              data={opportunities}
+              columns={columns}
+              key-field="Id">
+          </lightning-datatable>
+        </div>
+        <div class="pagination">
+            <lightning-button label="Previous" onclick={previousPage} disabled={isFirstPage}></lightning-button>
+            <lightning-button label="Next" onclick={nextPage} disabled={isLastPage}></lightning-button>
+            <p class="slds-m-around_medium">Page {currentPage} of {totalPages}</p>
+        </div>
+  </lightning-card>
 </template>
