@@ -1,3 +1,3 @@
-Map<String, List<Opportunity>> oppMap = OpportunityController.getOpportunitiesByStage();
+List<Opportunity> oppList = OpportunityController.getOpportunities();
 
-system.debug(oppMap);
+system.debug(oppList);

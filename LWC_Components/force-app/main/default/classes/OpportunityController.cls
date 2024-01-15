@@ -50,4 +50,12 @@ public with sharing class OpportunityController {
     opp.StageName = stageName;
     update opp;
   }
+
+  @AuraEnabled(cacheable=true)
+  public static List<Opportunity> getOpportunities() {
+    List<Opportunity> opportunityList;
+
+    opportunityList = [SELECT Id, Name, StageName, CloseDate, ExpectedRevenue FROM Opportunity];
+    return opportunityList;
+  }
 }
