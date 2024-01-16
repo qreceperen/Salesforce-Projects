@@ -51,14 +51,6 @@ export default class AccountTable extends LightningElement {
     this.selectedType = event.detail.value;
   }
 
-    // get isFirstPage() {
-    //   return this.currentPage <= 1;
-    // }
-
-    // get isLastPage() {
-    //   return this.currentPage >= this.totalPages;
-    // }
-
     handleNextPage() {
       if (this.currentPage < this.totalPages) {
         this.currentPage++;
