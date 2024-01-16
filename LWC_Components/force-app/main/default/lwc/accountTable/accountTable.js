@@ -18,7 +18,11 @@ export default class AccountTable extends LightningElement {
   ];
 
   //Query Accounts
-  @wire(getAccountsByType, { accountType: "$selectedType", pageNumber:'$currentPage', pageSize:'$pageSize'})
+  @wire(getAccountsByType, {
+    accountType: "$selectedType",
+    pageNumber: "$currentPage",
+    pageSize: "$pageSize"
+  })
   wiredAccounts({ error, data }) {
     if (data) {
       this.accounts = data;
@@ -27,7 +31,7 @@ export default class AccountTable extends LightningElement {
     }
   }
 
-  //   Bring Type picklist
+  //   Bring Type picklist values
   @wire(getAccountTypes)
   wiredAccountTypes({ error, data }) {
     if (data) {
@@ -37,6 +41,7 @@ export default class AccountTable extends LightningElement {
     }
   }
 
+  //Count how many account is returned in selected Account Type
   @wire(getTotalAccountsCount, { accountType: "$selectedType" })
   wiredTotalAccountCount({ error, data }) {
     if (data) {
@@ -51,15 +56,15 @@ export default class AccountTable extends LightningElement {
     this.selectedType = event.detail.value;
   }
 
-    handleNextPage() {
-      if (this.currentPage < this.totalPages) {
-        this.currentPage++;
-      }
+  handleNextPage() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
     }
+  }
 
-    handlePreviousPage() {
-      if (this.currentPage > 1) {
-        this.currentPage--;
-      }
+  handlePreviousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
     }
+  }
 }
