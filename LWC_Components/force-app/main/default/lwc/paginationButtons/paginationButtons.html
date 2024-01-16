@@ -1,0 +1,21 @@
+<template>
+    <div class="slds-align_absolute-center">
+        <lightning-button-icon
+            icon-name="utility:left"
+            variant="border-filled"
+            alternative-text="Previous"
+            onclick={handlePrevious}
+            disabled={isFirstPage}
+            class="slds-m-right_xx-small">
+        </lightning-button-icon>
+
+        <lightning-button-icon
+            icon-name="utility:right"
+            variant="border-filled"
+            alternative-text="Next"
+            onclick={handleNext}
+            disabled={isLastPage}
+            class="slds-m-right_x-small">
+        </lightning-button-icon>
+    </div>
+</template>

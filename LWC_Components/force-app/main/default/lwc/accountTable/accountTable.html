@@ -5,32 +5,33 @@
     icon-name="standard:action_list_component"
   >
     <div class="slds-m-around_medium">
+      <lightning-combobox
+        name="accountType"
+        label="Account Type"
+        value={selectedType}
+        placeholder="Select Account Type"
+        options={accountTypes}
+        onchange={handleTypeChange}
+      >
+      </lightning-combobox>
+    </div>
+    <div class="slds-m-around_medium">
       <lightning-datatable data={accounts} columns={columns} key-field="id">
       </lightning-datatable>
     </div>
     <div>
-        <p class="slds-align_absolute-center">Page {currentPage} of {totalPages}</p>
+      <p class="slds-align_absolute-center">
+        Page {currentPage} of {totalPages}
+      </p>
     </div>
-    <div class="slds-align_absolute-center">
-      <lightning-button-icon
-        icon-name="utility:left"
-        variant="border-filled"
-        alternative-text="Previous"
-        onclick={previousPage}
-        disabled={isFirstPage}
-        class="slds-m-right_xx-small"
+    <div>
+      <c-pagination-buttons
+        current-page={currentPage}
+        total-pages={totalPages}
+        onprevious={handlePreviousPage}
+        onnext={handleNextPage}
       >
-      </lightning-button-icon>
-
-      <lightning-button-icon
-        icon-name="utility:right"
-        variant="border-filled"
-        alternative-text="Next"
-        onclick={nextPage}
-        disabled={isLastPage}
-        class="slds-m-right_x-small"
-      >
-      </lightning-button-icon>
+      </c-pagination-buttons>
     </div>
   </lightning-card>
 </template>

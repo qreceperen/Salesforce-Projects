@@ -1,3 +1,4 @@
-List<Opportunity> oppList = OpportunityController.getOpportunities();
+List<String> stringList = new List<String>();
 
-system.debug(oppList);
+stringList = accountController.getAccountTypes();
+system.debug(stringList);
