@@ -1,11 +1,5 @@
-List<Contact> conList = ContactManagerController.getContactList();
+// List<Case> allCases = [SELECT Id, CaseNumber, Subject, Status, Priority, Owner.Name FROM Case];
+// system.debug(allCases);
 
-for(Contact con : conList){
-    system.debug('Contact Name --- '+ con.FirstName);
-    system.debug('Account Name --- ' + con.Account.Name);
-    system.debug('----------------------------------------');
-
-}
-
-
-
+List<Case> filteredCase = caseController.getCases('Repeat');
+system.debug(filteredCase);
