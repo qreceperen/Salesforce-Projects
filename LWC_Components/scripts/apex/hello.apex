@@ -1,5 +1,9 @@
-// List<Case> allCases = [SELECT Id, CaseNumber, Subject, Status, Priority, Owner.Name FROM Case];
-// system.debug(allCases);
+Map<String, Object> oppData = new Map<String, Object>();
+oppData.put('Name', 'Test Opportunity');
+oppData.put('Amount', '50000');
+oppData.put('CloseDate', '2024-01-01');
+oppData.put('StageName', 'Prospecting');
+oppData.put('Description', 'This is a test description for the new opportunity.');
 
-List<String> test = OpportunityService.getOpportunityStagePicklistValues();
-system.debug(test);
+Id newOppId = OpportunityService.createOpportunity(oppData);
+System.debug('New Opportunity Id: ' + newOppId);
