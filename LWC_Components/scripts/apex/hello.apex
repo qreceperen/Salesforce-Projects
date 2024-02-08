@@ -1,4 +1,6 @@
-List<String> stringList = new List<String>();
+List<PermissionSetAssignment> getPerm = UserPermissionSetController.getUserPermissionSets('User');
 
-stringList = accountController.getAccountTypes();
-system.debug(stringList);
+for(PermissionSetAssignment p : getPerm) {
+    system.debug(p.Assignee.Name + '---' + p.PermissionSet.Name);
+
+}
