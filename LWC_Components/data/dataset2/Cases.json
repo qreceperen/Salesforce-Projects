@@ -1,0 +1,264 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef1"
+            },
+            "Subject": "Repeated motor breakdown while shutting off",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef1"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef2"
+            },
+            "Subject": "Mechanical maintenance guidelines for generator misleading",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef3"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef3"
+            },
+            "Subject": "Maintenance guidelines for generator unclear",
+            "Status": "Closed",
+            "Priority": "Low",
+            "ContactId": "@ContactRef4"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef4"
+            },
+            "Subject": "Frequent mechanical breakdown",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef5"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef5"
+            },
+            "Subject": "Electronic panel fitting loose",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef5"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef6"
+            },
+            "Subject": "Generator assembly instructions unclear",
+            "Status": "Closed",
+            "Priority": "Low",
+            "ContactId": "@ContactRef6"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef7"
+            },
+            "Subject": "Maintenance guidelines for generator unclear",
+            "Status": "New",
+            "Priority": "Low",
+            "ContactId": "@ContactRef6"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef8"
+            },
+            "Subject": "Performance inadequate for second consecutive week",
+            "Status": "Closed",
+            "Priority": "High",
+            "ContactId": "@ContactRef7"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef9"
+            },
+            "Subject": "Starting generator after electrical failure",
+            "Status": "Closed",
+            "Priority": "High",
+            "ContactId": "@ContactRef10"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef10"
+            },
+            "Subject": "Shutting down of generator",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef11"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef11"
+            },
+            "Subject": "Cannot start generator after electrical failure",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef11"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef12"
+            },
+            "Subject": "Structural failure of generator base",
+            "Status": "Closed",
+            "Priority": "High",
+            "ContactId": "@ContactRef12"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef13"
+            },
+            "Subject": "Power generation below stated level",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef12"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef14"
+            },
+            "Subject": "Customer service for portable generators needs beefing up",
+            "Status": "Closed",
+            "Priority": "Low",
+            "ContactId": "@ContactRef15"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef15"
+            },
+            "Subject": "Structural breakdown of rotor assembly",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef15"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef16"
+            },
+            "Subject": "Delay in installation; spare parts unavailable",
+            "Status": "Closed",
+            "Priority": "High",
+            "ContactId": "@ContactRef16"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef17"
+            },
+            "Subject": "Starting up generator consumes excessive power",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef16"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef18"
+            },
+            "Subject": "Generator GC3060 platform structure is weakening",
+            "Status": "Closed",
+            "Priority": "High",
+            "ContactId": "@ContactRef17"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef19"
+            },
+            "Subject": "Seeking guidance on electrical wiring installation for GC5060",
+            "Status": "New",
+            "Priority": "Low",
+            "ContactId": "@ContactRef17"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef20"
+            },
+            "Subject": "Signal panel on GC5060 blinks intermittently",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef17"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef21"
+            },
+            "Subject": "Electric surge damaging adjacent equipment",
+            "Status": "Closed",
+            "Priority": "High",
+            "ContactId": "@ContactRef17"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef22"
+            },
+            "Subject": "Design issue with mechanical rotor",
+            "Status": "New",
+            "Priority": "Low",
+            "ContactId": "@ContactRef18"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef23"
+            },
+            "Subject": "Motor design hindering performance",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef18"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef24"
+            },
+            "Subject": "Easy installation process",
+            "Status": "Closed",
+            "Priority": "Low",
+            "ContactId": "@ContactRef19"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef25"
+            },
+            "Subject": "Maintenance guidelines for generator unclear",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef19"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef26"
+            },
+            "Subject": "Electrical circuit malfunctioning",
+            "Status": "Closed",
+            "Priority": "Medium",
+            "ContactId": "@ContactRef20"
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Contact List" icon-name="standard:contact">
+        <div class="slds-m-around_medium">
+            <lightning-input type="text" label="Filter by last name" onchange={handleFilterChange}></lightning-input>
+            <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+        </div>
+        <template if:true={paginatedContacts}>
+            <ul class="slds-list_dotted">
+                <template for:each={paginatedContacts} for:item="contact">
+                    <li key={contact.Id}>{contact.LastName} - {contact.Email}</li>
+                </template>
+            </ul>
+            <div class="pagination">
+                <lightning-button label="Previous" onclick={handlePreviousPage} disabled={isFirstPage}>
+                </lightning-button>
+                <span>Page {currentPage} of {totalPages}</span>
+                <lightning-button label="Next" onclick={handleNextPage} disabled={isLastPage}>
+                </lightning-button>
+            </div>
+        </template>
+        <template if:true={error}>
+            <!-- Display error here, e.g., using a custom error component -->
+        </template>
+
+    </lightning-card>
+</template>
