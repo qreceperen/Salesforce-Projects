@@ -1,6 +1,7 @@
 import { LightningElement, track, wire } from 'lwc';
 import createOpportunity from '@salesforce/apex/OpportunityService.createOpportunity';
 import getOpportunityStagePicklistValues from '@salesforce/apex/OpportunityService.getOpportunityStagePicklistValues';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class OpportunityCreator extends LightningElement {
     @track stageOptions;
@@ -38,5 +39,36 @@ export default class OpportunityCreator extends LightningElement {
 
     goToPreviousStep() {
         this.currentStep--;
+    }
+
+    saveOpportunity() {
+        const oppFields = {
+            Name: this.opportunityData.Name,
+            Amount: this.opportunityData.Amount,
+            CloseDate: this.opportunityData.CloseDate,
+            StageName: this.opportunityData.Stage,
+            Description: this.opportunityData.Description
+        };
+        // console.log('Opp Field- '+ oppFields);
+        createOpportunity({ oppData: oppFields })
+            .then((result) => {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Success',
+                        message: 'Opportunity created Successfully',
+                        variant: 'success'
+                    }),
+                );
+                
+            })
+            .catch((error) => {
+                this.dispatchEvent(
+                    new ShowToastEvent({
+                        title: 'Error creating Opportunity',
+                        message: error.body.message,
+                        variant: 'error'
+                    }),
+                );
+            });
     }
 }
