@@ -1,0 +1,28 @@
+<!-- sldsValidatorIgnore -->
+<template>
+  <lightning-card title="Related Loans" icon-name="standard:account">
+    <div class="slds-m-around_medium">
+      <template if:true={isEditMode}>
+        <lightning-input label="Loan Name"
+        value={editRecord.Name}
+        onchange={handleInputChange}
+        data-field="Name"></lightning-input>
+        <lightning-button
+          label="Cancel"
+          onclick={cancelEdit}
+        ></lightning-button>
+      </template>
+      <template if:false={isEditMode}>
+        <lightning-datatable
+          key-field="id"
+          data={loans}
+          columns={columns}
+          onrowaction={handleRowAction}
+          hide-checkbox-column="true"
+          resize-column-disabled="false"
+        >
+        </lightning-datatable>
+      </template>
+    </div>
+  </lightning-card>
+</template>
