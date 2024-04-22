@@ -2,6 +2,9 @@
     <lightning-card title="Create Opportunity" icon-name="standard:opportunity">
         <template if:true={stepVisibility.isFirstStep}>
             <div class="slds-p-around_medium">
+                <div>
+                    There is an oppoortunity here
+                </div>
                 <lightning-input
                     label="Opportunity Name"
                     value={opportunityData.Name}
