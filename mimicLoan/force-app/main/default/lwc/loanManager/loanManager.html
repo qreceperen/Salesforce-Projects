@@ -1,0 +1,15 @@
+<!-- sldsValidatorIgnore -->
+<template>
+    <lightning-card>
+        <div class="slds-m-around_medium"> 
+            <h1> All Related Loans to the account is here </h1>
+            <lightning-datatable
+                key-field="id"
+                data={loans}
+                columns={columns}
+                onrowaction={handleRowAction}
+                hide-checkbox-column="true">
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+</template>
