@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>*</members>
-        <name>ApexClass</name>
+        <members>Loan__c.All</members>
+        <name>ListView</name>
+    </types>
+    <types>
+        <members>Loan__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Loan__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>EREN_Bank</members>
+        <name>CustomApplication</name>
     </types>
     <types>
         <members>*</members>
-        <name>ApexComponent</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexPage</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTestSuite</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>ApexTrigger</name>
+        <name>PermissionSet</name>
     </types>
     <types>
         <members>*</members>
