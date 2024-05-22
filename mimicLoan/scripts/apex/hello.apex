@@ -1,2 +1,2 @@
-List<Loan__c> loans = LoanController.getLoans('00103000018pZ9MAAU');
-system.debug(loans);
+Loan__c loan = LoanController.getLoanById('a0003000003fHzjAAE');
+system.debug(loan);

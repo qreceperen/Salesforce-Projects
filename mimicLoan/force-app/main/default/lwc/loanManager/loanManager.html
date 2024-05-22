@@ -10,6 +10,17 @@
                 onrowaction={handleRowAction}
                 hide-checkbox-column="true">
             </lightning-datatable>
+            
+        </div>
+
+        <div>
+            <template if:true={isDetailSectionOpen}>
+                <h2>Loan Details</h2>
+                <p><strong>Name:</strong> {selectedLoan.Name}</p>
+                <p><strong>Type:</strong> {selectedLoan.Loan_Type__c}</p>
+                <p><strong>Amount:</strong> {selectedLoan.Loan_Amount__c}</p>
+                <!-- Add more fields as necessary -->
+            </template>
         </div>
     </lightning-card>
 </template>
