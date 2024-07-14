@@ -1,8 +1,4 @@
-Map<String,Object> accountFields = new Map<String,Object>();
+List<AccountController.AccountWrapper> wrapperList = AccountController.getAccountListWithOpportunities();
 
-accountFields.put('Name','Burlington Textiles');
-accountFields.put('Phone', '123-456-7890');
+system.debug('All List '+ wrapperList);
 
-Id newAccountId = AccountContactManagerController.createAccount(accountFields);
-
-system.debug('New Account ID: ' + newAccountId);

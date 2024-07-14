@@ -1,58 +1,30 @@
-public with sharing class accountController {
-  @AuraEnabled(cacheable=true)
-  public static List<Account> getAccounts(
-    Integer pageNumber,
-    Integer pageSize
-  ) {
-    integer offset;
-    List<Account> accountList;
+public with sharing class AccountController {
+    public class AccountWrapper {
 
-    offset = (pageNumber - 1) * pageSize;
-    accountList = [
-      SELECT Id, Name, Type
-      FROM Account
-      LIMIT :pageSize
-      OFFSET :offset
-    ];
-    return accountList;
-  }
+        @AuraEnabled
+        public Account account { get; set; }
+        
+        @AuraEnabled
+        public Integer opportunityCount { get; set; }
 
-  @AuraEnabled(cacheable=true)
-  public static Integer getTotalAccountsCount(String accountType) {
-    return [SELECT COUNT() FROM Account WHERE Type = :accountType];
-  }
-
-  @AuraEnabled(cacheable=true)
-  public static List<String> getAccountTypes() {
-    List<String> types;
-    Schema.DescribeFieldResult field;
-
-    types = new List<String>();
-    field = Account.Type.getDescribe();
-    for (Schema.PicklistEntry entry : field.getPicklistValues()) {
-      types.add(entry.getLabel());
+        @AuraEnabled
+        public List<Opportunity> opportunities { get; set; }
     }
-    return types;
-  }
 
-  @AuraEnabled(cacheable=true)
-  public static List<Account> getAccountsByType(
-    String accountType,
-    Integer pageNumber,
-    Integer pageSize
-  ) {
-    Integer offSet;
-    List<Account> accountList;
 
-    offSet = (pageNumber - 1) * pageSize;
-    accountList = [
-      SELECT Id, Name, Type
-      FROM Account
-      WHERE Type = :accountType
-      LIMIT :pageSize
-      OFFSET :offSet
-    ];
+    @AuraEnabled(cacheable=true)
+    public static List<AccountWrapper> getAccountListWithOpportunities() {
+        List<AccountWrapper> results = new List<AccountWrapper>();
+        List<Account> accountList = [SELECT Id, Name, Industry, (SELECT Id, Name FROM Opportunities) FROM Account ];
 
-    return accountList;
-  }
+        for(Account acc : accountList ) {
+            AccountWrapper wrapper = new AccountWrapper();
+            wrapper.account = acc;
+            wrapper.opportunityCount = acc.Opportunities.size();
+            results.add(wrapper);
+        }
+
+        return results;
+    }
+
 }

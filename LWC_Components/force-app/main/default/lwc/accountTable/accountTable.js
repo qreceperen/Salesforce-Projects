@@ -1,70 +1,54 @@
-import { LightningElement, track, wire } from "lwc";
-import getTotalAccountsCount from "@salesforce/apex/accountController.getTotalAccountsCount";
-import getAccountTypes from "@salesforce/apex/accountController.getAccountTypes";
-import getAccountsByType from "@salesforce/apex/accountController.getAccountsByType";
+import { LightningElement, wire, track } from 'lwc';
+import getAccountListWithOpportunities from '@salesforce/apex/AccountController.getAccountListWithOpportunities';
+
+const COLUMNS = [
+    { label: 'Account Name', fieldName: 'accountName' },
+    { label: 'Industry', fieldName: 'industry' },
+    { label: 'Number of Opportunities', fieldName: 'opportunityCount', type: 'button', 
+        typeAttributes: { 
+            label: { fieldName: 'opportunityCount' }, 
+            name: 'show_opportunities', 
+            variant: 'base' 
+        } 
+    }
+];
 
 export default class AccountTable extends LightningElement {
-  @track currentPage = 1;
-  @track pageSize = 3;
-  @track totalRecords;
-  @track totalPages;
-  @track accountTypes;
-  @track selectedType;
-  @track accounts;
+    columns = COLUMNS;
+    @track accounts;
+    @track isModalOpen = false;
+    @track selectedOpportunities = [];
 
-  columns = [
-    { label: "Account Name", fieldName: "Name" },
-    { label: "Account Type", fieldName: "Type" }
-  ];
-
-  //Query Accounts
-  @wire(getAccountsByType, {
-    accountType: "$selectedType",
-    pageNumber: "$currentPage",
-    pageSize: "$pageSize"
-  })
-  wiredAccounts({ error, data }) {
-    if (data) {
-      this.accounts = data;
-    } else if (error) {
-      console.log(error);
+    @wire(getAccountListWithOpportunities)
+    wiredAccounts({ error, data }) {
+        if (data) {
+            this.accounts = data.map(accountWrapper => ({
+                id: accountWrapper.account.Id,
+                accountName: accountWrapper.account.Name,
+                industry: accountWrapper.account.Industry,
+                opportunityCount: accountWrapper.opportunityCount,
+                opportunities: accountWrapper.account.Opportunities // Ensure this matches the correct case
+            }));
+            // console.log('Data retrieved: ' + JSON.stringify(this.accounts));
+        } else if (error) {
+            console.log('Error retrieving accounts: ', error);
+        }
     }
-  }
 
-  //   Bring Type picklist values
-  @wire(getAccountTypes)
-  wiredAccountTypes({ error, data }) {
-    if (data) {
-      this.accountTypes = data.map((type) => ({ label: type, value: type }));
-    } else if (error) {
-      console.error("Receiving Error-- " + JSON.stringify(error));
+    handleRowAction(event) {
+        const actionName = event.detail.action.name;
+        const row = event.detail.row;
+        if (actionName === 'show_opportunities') {
+            this.selectedOpportunities = row.opportunities || []; // Ensure it's always an array
+            this.showModal();
+        }
     }
-  }
 
-  //Count how many account is returned in selected Account Type
-  @wire(getTotalAccountsCount, { accountType: "$selectedType" })
-  wiredTotalAccountCount({ error, data }) {
-    if (data) {
-      this.totalRecords = data;
-      this.totalPages = Math.ceil(this.totalRecords / this.pageSize);
-    } else if (error) {
-      console.log(error);
+    showModal() {
+        this.isModalOpen = true;
     }
-  }
 
-  handleTypeChange(event) {
-    this.selectedType = event.detail.value;
-  }
-
-  handleNextPage() {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
+    closeModal() {
+        this.isModalOpen = false;
     }
-  }
-
-  handlePreviousPage() {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
-  }
 }
