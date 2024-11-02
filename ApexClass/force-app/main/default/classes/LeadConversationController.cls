@@ -1,6 +1,6 @@
 public with sharing class LeadConversationController {
   // Method to evaluate and assign a rating to the lead
-  public static String evaluateLeadRating(Id leadId) {
+  public static String evaluateLeadRating(Id leadId)     {
     Lead leadRecord;
     String rating;
     leadRecord = [
