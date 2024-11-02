@@ -1,3 +1,4 @@
+<!-- sldsValidatorIgnore -->
 <template>
     <lightning-card title="Account List" icon-name="standard:account">
         <lightning-datatable
@@ -10,30 +11,9 @@
         </lightning-datatable>
     </lightning-card>
     <!-- Modal start here -->
-    <template if:true={isModalOpen}>
-        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
-            <div class="slds-modal__container">
-                <header class="slds-modal__header">
-                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
-                        <lightning-icon icon-name="utility:close" alternative-text="close" size="small"></lightning-icon>
-                        <span class="slds-assistive-text">Close</span>
-                    </button>
-                    <h2 class="slds-text-heading_medium">Opportunity Details</h2>
-                </header>
-                <div class="slds-modal__content slds-p-around_medium">
-                    <template if:true={selectedOpportunities.length}>
-                        <ul>
-                            <template for:each={selectedOpportunities} for:item="opp">
-                                <li key={opp.Id}>{opp.Name}</li>
-                            </template>
-                        </ul>
-                    </template>
-                </div>
-                <footer class="slds-modal__footer">
-                    <button class="slds-button slds-button_neutral" onclick={closeModal}>Close</button>
-                </footer>
-            </div>
-        </section>
-        <div class="slds-backdrop slds-backdrop_open"></div>
-    </template>
+     <c-opportunity-modal
+        is-modal-open={isModalOpen}
+        opportunities = {selectedOpportunities}
+        onclose={closeModal}
+     ></c-opportunity-modal>
 </template>

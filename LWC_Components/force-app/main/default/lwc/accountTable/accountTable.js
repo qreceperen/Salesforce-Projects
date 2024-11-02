@@ -50,5 +50,6 @@ export default class AccountTable extends LightningElement {
 
     closeModal() {
         this.isModalOpen = false;
+        this.selectedOpportunities = [];
     }
 }
