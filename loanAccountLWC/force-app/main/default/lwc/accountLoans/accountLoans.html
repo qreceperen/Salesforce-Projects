@@ -3,10 +3,12 @@
   <lightning-card title="Related Loans" icon-name="standard:account">
     <div class="slds-m-around_medium">
       <template if:true={isEditMode}>
-        <lightning-input label="Loan Name"
-        value={editRecord.Name}
-        onchange={handleInputChange}
-        data-field="Name"></lightning-input>
+        <lightning-input
+          label="Loan Name"
+          value={editRecord.Name}
+          onchange={handleInputChange}
+          data-field="Name"
+        ></lightning-input>
         <lightning-button
           label="Cancel"
           onclick={cancelEdit}
