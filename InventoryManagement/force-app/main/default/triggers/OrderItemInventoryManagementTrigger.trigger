@@ -18,7 +18,7 @@ trigger OrderItemInventoryManagementTrigger on Order_Item__c(
     ]
   );
 
-  OrderItemInventoryHandler handler = new OrderItemInventoryHandler(
+  OrderItemInventoryHandler handler = new OrderItemInventoryHandler    (
     Trigger.New,
     relatedInventoryProductMap
   );
