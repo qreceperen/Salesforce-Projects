@@ -12,6 +12,7 @@
     <isOmniPinnedViewEnabled>false</isOmniPinnedViewEnabled>
     <label>Inventory Management</label>
     <navType>Standard</navType>
+    <tabs>standard-home</tabs>
     <tabs>Inventory_Product__c</tabs>
     <tabs>Order_Item__c</tabs>
     <tabs>Customer_Order__c</tabs>
