@@ -1,1 +1,2 @@
-InventoryProductController.createOrderItem('a00O800000H4lEtIAJ',25 );
+List<Inventory_Product__c> products = orderItemHandler.getInventoryProducts();
+system.debug(products);
