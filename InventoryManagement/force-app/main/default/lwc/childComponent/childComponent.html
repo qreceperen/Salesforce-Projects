@@ -1,0 +1,8 @@
+<template>
+    <div>
+        <h3>Child Component</h3>
+        <p>Message from Parent: {message}</p>
+        <lightning-input label="Custom Message to Parent" value={customMessage} onchange={handleInputChange}></lightning-input>
+        <button onclick={handleButtonClick}>Send Data to Parent</button>
+    </div>
+</template>

@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="Inventory Products" icon-name="custom:custom63">
+        <lightning-datatable
+            key-field="Id"
+            data={inventoryProducts}
+            columns={columns}
+            hide-checkbox-column>
+        </lightning-datatable>
+        <template if:true={error}>
+            <p>{error}</p>
+        </template>
+    </lightning-card>
+</template>

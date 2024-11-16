@@ -1,0 +1,7 @@
+<template>
+    <div>
+        <h2>Parent Component</h2>
+        <p>Message from Child: {messageFromChild}</p>
+        <c-child-component message={parentMessage} onsendmessage={handleChildMessage}></c-child-component>
+    </div>
+</template>
