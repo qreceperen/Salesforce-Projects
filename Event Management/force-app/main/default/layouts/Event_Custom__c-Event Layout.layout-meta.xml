@@ -21,10 +21,6 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Available_Seats__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
                 <field>Seats_Filled__c</field>
             </layoutItems>
         </layoutColumns>

@@ -6,11 +6,6 @@
     </applicationVisibilities>
     <fieldPermissions>
         <editable>true</editable>
-        <field>Event_Custom__c.Available_Seats__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>Event_Custom__c.Average_Feedback_Score__c</field>
         <readable>true</readable>
     </fieldPermissions>
