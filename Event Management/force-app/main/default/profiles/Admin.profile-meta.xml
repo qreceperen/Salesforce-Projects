@@ -5,7 +5,20 @@
         <default>false</default>
         <visible>false</visible>
     </applicationVisibilities>
+    <classAccesses>
+        <apexClass>EventRegistrationTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>FeedbackTriggerHandler</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
     <custom>false</custom>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Event_Custom__c.Available_Seats__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
         <field>Event_Custom__c.Average_Feedback_Score__c</field>
@@ -34,6 +47,11 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Event_Custom__c.Status__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Event_Custom__c.Total_Capacity__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

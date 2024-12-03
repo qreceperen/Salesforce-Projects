@@ -23,6 +23,10 @@
                 <behavior>Edit</behavior>
                 <field>Seats_Filled__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Readonly</behavior>
+                <field>Available_Seats__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
