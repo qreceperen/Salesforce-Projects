@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Event Feedback Details">
+        <!-- Render content only when eventFeedback is defined -->
+        <template if:true={eventFeedback}>
+            <!-- Event Name and Average Rating -->
+            <div class="slds-m-around_medium">
+                <h2>{eventFeedback.eventName}</h2>
+                <p>Average Rating: {eventFeedback.averageRating}</p>
+            </div>
+
+            <!-- Feedback Table -->
+            <template if:true={eventFeedback.eventRelatedFeedbacks}>
+                <lightning-datatable 
+                    key-field="Id" 
+                    data={eventFeedback.eventRelatedFeedbacks} 
+                    columns={columns}>
+                </lightning-datatable>
+            </template>
+
+            <!-- No Feedback Case -->
+            <template if:false={eventFeedback.eventRelatedFeedbacks}>
+                <p>No feedback records found for this event.</p>
+            </template>
+        </template>
+
+        <!-- Show Loading Message While Fetching Data -->
+        <template if:false={eventFeedback}>
+            <lightning-spinner alternative-text="Loading event feedback"></lightning-spinner>
+        </template>
+    </lightning-card>
+</template>

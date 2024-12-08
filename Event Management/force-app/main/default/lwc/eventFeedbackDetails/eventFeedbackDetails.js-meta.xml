@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="eventFeedbackDetails">
+    <apiVersion>62.0</apiVersion> <!-- Adjust this to match your org's API version -->
+    <isExposed>false</isExposed>
+</LightningComponentBundle>

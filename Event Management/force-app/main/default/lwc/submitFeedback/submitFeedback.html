@@ -1,0 +1,36 @@
+<template>
+    <lightning-card title="Submit Feedback">
+        <div class="slds-m-around_medium">
+            <lightning-record-edit-form 
+                object-api-name="Feedback__c" 
+                onsuccess={handleSuccess} 
+                onerror={handleError}>
+
+                <!-- Automatically link to the current Event_Registration__c -->
+                <lightning-input-field field-name="Event_Registration__c" value={recordId}></lightning-input-field>
+
+                <!-- Feedback Name -->
+                <lightning-input-field field-name="Name" required></lightning-input-field>
+
+                <!-- Rating Field -->
+                <lightning-input 
+                    name="rating" 
+                    label="Rating" 
+                    type="number" 
+                    min="1" 
+                    max="10" 
+                    required 
+                    onchange={handleRatingChange}>
+                </lightning-input>
+
+                <!-- Feedback Text -->
+                <lightning-input-field field-name="Feedback_Text__c" required></lightning-input-field>
+
+                <!-- Submit Button -->
+                <div class="slds-m-top_medium">
+                    <lightning-button variant="brand" type="submit" label="Submit Feedback"></lightning-button>
+                </div>
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+</template>
