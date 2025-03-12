@@ -2,35 +2,23 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>*</members>
-        <name>ApexClass</name>
+        <name>CustomSite</name>
     </types>
     <types>
         <members>*</members>
-        <name>ApexComponent</name>
+        <name>ExperienceBundle</name>
     </types>
     <types>
         <members>*</members>
-        <name>ApexPage</name>
+        <name>Network</name>
     </types>
     <types>
         <members>*</members>
-        <name>ApexTestSuite</name>
+        <name>DigitalExperienceBundle</name>
     </types>
     <types>
         <members>*</members>
-        <name>ApexTrigger</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>LightningComponentBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>StaticResource</name>
+        <name>DigitalExperienceConfig</name>
     </types>
     <version>62.0</version>
 </Package>
