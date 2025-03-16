@@ -1,18 +1,50 @@
-# Salesforce DX Project: Next Steps
+📌 1. Objects & Fields
+✅ 1. FinTrack_Invoice__c (Custom Object)
+Purpose: Represents an invoice issued to a customer.
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Field Name	Type	Description
+Account__c	Lookup (Account)	Links to the customer/vendor.
+Total_Amount__c	Currency	Total invoice amount.
+Status__c	Picklist (Open, Partially Paid, Paid, Overdue)	Current invoice status.
+✅ 2. FinTrack_Payment__c (Custom Object)
+Purpose: Represents a payment made towards an invoice.
 
-## How Do You Plan to Deploy Your Changes?
+Field Name	Type	Description
+Invoice__c	Master-Detail (FinTrack_Invoice__c)	Links payment to an invoice.
+Amount_Paid__c	Currency	Amount paid by the customer.
+Payment_Date__c	Date	Date when the payment was made.
+Status__c	Picklist (Completed, Pending, Rejected)	Payment status.
+✅ 3. Financial_Transaction__c (Custom Object)
+Purpose: Represents a financial record for income or expenses.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+Field Name	Type	Description
+Account__c	Lookup (Account)	Links the transaction to a customer/vendor.
+Amount__c	Currency	Transaction amount (Income or Expense).
+Transaction_Type__c	Picklist (Income, Expense, Refund)	Defines the type of transaction.
+Transaction_Date__c	Date	Date of the financial transaction.
+FinTrack_Payment__c	Lookup (FinTrack_Payment__c)	Links to the payment (if applicable).
+📌 2. Overall Summary of What We Achieved
+🔹 Core Features Implemented
+✅ 1. Payment Processing Logic
 
-## Configure Your Salesforce DX Project
+When a payment is made, we automatically create a Financial Transaction for it.
+We ensure that Financial Transactions are linked to Payments and Invoices.
+✅ 2. Overpayment Prevention
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+Payments cannot exceed the Invoice’s total amount.
+We implemented validation logic that checks past payments and prevents overpayments using addError().
+✅ 3. Trigger Handler Design Pattern
 
-## Read All About It
+We refactored the trigger to use a separate handler class (PaymentTransactionHandler).
+The handler:
+Fetches Invoice details.
+Fetches Total Paid Amount using Aggregate SOQL.
+Validates payments before inserting transactions.
+✅ 4. Bulk Processing & Performance Optimizations
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+Used Maps & Sets for faster lookups.
+Used Aggregate SOQL to optimize total paid amount calculations.
+Ensured bulk-safe operations to handle multiple payments at once.
+
+
+-- BEFORE LWC PART SUM
