@@ -1,4 +1,5 @@
 public with sharing class RefundProcessor {
+    @AuraEnabled
     public static String processRefund(Id paymentId, Decimal refundAmount) {
         // Ensure input validation
         if (paymentId == null || refundAmount == null || refundAmount <= 0) {
@@ -44,5 +45,14 @@ public with sharing class RefundProcessor {
         } catch (Exception e) {
             return 'Error processing refund: ' + e.getMessage();
         }
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static List<FinTrack_Payment__c> getRelatedPaymentsWithInvoiceId(Id invoiceId){
+        return [
+            SELECT Id, Name, Amount_Paid__c
+            FROM FinTrack_Payment__c
+            WHERE Invoice__c = :invoiceId
+        ];
     }
 }
