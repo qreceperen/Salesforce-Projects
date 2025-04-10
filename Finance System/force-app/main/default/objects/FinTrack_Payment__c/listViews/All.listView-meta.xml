@@ -3,10 +3,10 @@
     <fullName>All</fullName>
     <columns>NAME</columns>
     <columns>Invoice__c</columns>
+    <columns>Amount_Paid__c</columns>
     <columns>Status__c</columns>
     <columns>Payment_Date__c</columns>
     <columns>Payment_Method__c</columns>
-    <columns>Amount_Paid__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

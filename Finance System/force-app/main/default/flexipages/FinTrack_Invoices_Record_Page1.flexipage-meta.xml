@@ -388,12 +388,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>invoicePaymentsLwc</componentName>
-                <identifier>c_invoicePaymentsLwc</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
                     <name>label</name>
                     <value>Tabs</value>
