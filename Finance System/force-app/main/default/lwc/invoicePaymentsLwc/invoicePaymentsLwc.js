@@ -85,4 +85,10 @@ export default class InvoicePaymentsLwc extends LightningElement {
     connectedCallback(){
         console.log('recordId ', this.recordId);
     }
+
+    // Takes data from child component. 
+    handleRefundSubmit(event){
+        this.refundAmount = event.detail.refundAmount; // refundAmount comes from child and give variable to parent.
+        this.submitRefund();
+    }
 }

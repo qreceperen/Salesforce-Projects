@@ -1,0 +1,44 @@
+<template>
+    <section role="dialog" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+            <!-- Header -->
+            <header class="slds-modal__header">
+                <lightning-button-icon 
+                    icon-name="utility:close" 
+                    alternative-text="Close" 
+                    variant="bare-inverse"
+                    class="slds-modal__close"
+                    onclick={handleCancel}>
+                </lightning-button-icon>
+                <h2 class="slds-modal__title slds-hyphenate">Refund Payment</h2>
+            </header>
+
+            <!-- Body -->
+            <div class="slds-modal__content slds-p-around_medium">
+                <lightning-layout vertical-align="center" multiple-rows="true">
+                    <lightning-layout-item size="12" class="slds-p-bottom_small">
+                        <p><strong>Original Amount Paid:</strong> {selectedAmountFromParent}</p>
+                    </lightning-layout-item>
+
+                        <lightning-input 
+                            label="Refund Amount"
+                            type="number"
+                            value={refundAmount}
+                            onchange={handleRefundAmountChange}
+                            min="0"
+                            class="slds-input">
+                        </lightning-input>
+
+                </lightning-layout>
+            </div>
+
+            <!-- Footer -->
+            <footer class="slds-modal__footer">
+                <lightning-button label="Cancel" onclick={handleCancel}></lightning-button>
+                <lightning-button label="Submit" variant="brand" onclick={handleSubmit} class="slds-m-left_small"></lightning-button>
+            </footer>
+        </div>
+    </section>
+
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>
