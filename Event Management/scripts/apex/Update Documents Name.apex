@@ -1,12 +1,13 @@
-// This Script updates all Income Transaction Documents Name to `Income Transaction Name` 
-// For example picture name 'testPic1', 'testPic2' to 'IN-000021-1','IN-000021-2'
+// This Script updates all Expense  Transaction Documents Name to `Income Transaction Name` 
+// For example picture name 'testPic1', 'testPic2' to 'EX-000021-1','EX-000021-2'
+// To update Income_Transaction__c you can change 'Expense_Transaction__c' in the script to 'Income_Transaction__c'
 
-List<Income_Transaction__c> incomeTransactions = [
-    SELECT Id, Name FROM Income_Transaction__c
+List<Expense_Transaction__c> incomeTransactions = [
+    SELECT Id, Name FROM Expense_Transaction__c
 ];
 
 Set<Id> transactionIds = new Set<Id>();
-for(Income_Transaction__c txn : incomeTransactions ){
+for(Expense_Transaction__c txn : incomeTransactions ){
     transactionIds.add(txn.id);
 }
 
@@ -19,7 +20,7 @@ List<ContentDocumentLink> links = [
 
 // All Income Transaction records is mapped within Id and Name
 Map<Id, String> transactionNames = new Map<Id, String>();
-for(Income_Transaction__c txn : incomeTransactions){
+for(Expense_Transaction__c txn : incomeTransactions){
     transactionNames.put(txn.Id, txn.Name);
 }
 
