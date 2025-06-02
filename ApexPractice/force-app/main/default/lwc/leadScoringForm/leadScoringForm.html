@@ -1,0 +1,68 @@
+<template>
+    <lightning-card title="Lead Information" icon-name="standard:form">
+        <div class="slds-m-around_medium">
+            
+            <!-- Input Form -->
+            <div class="slds-grid slds-wrap slds-gutters">
+                
+                <!-- Industry Field -->
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox
+                        name="industry"
+                        label="Industry"
+                        value={industry}
+                        placeholder="Select Industry"
+                        options={industryOptions}
+                        onchange={handleIndustryChange}
+                    ></lightning-combobox>
+                </div>
+
+                <!-- Company Size Field -->
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-combobox
+                        name="companySize"
+                        label="Company Size"
+                        value={companySize}
+                        placeholder="Select Company Size"
+                        options={companySizeOptions}
+                        onchange={handleCompanySizeChange}
+                    ></lightning-combobox>
+                </div>
+
+                <!-- Email Opens Field -->
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                        name="emailOpens"
+                        label="Email Opens"
+                        type="number"
+                        value={emailOpens}
+                        onchange={handleEmailOpensChange}
+                    ></lightning-input>
+                </div>
+
+                <!-- Website Visits Field -->
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-input
+                        name="websiteVisits"
+                        label="Website Visits"
+                        type="number"
+                        value={websiteVisits}
+                        onchange={handleWebsiteVisitsChange}
+                    ></lightning-input>
+                </div>
+
+            </div>
+
+            <!-- Calculate Button -->
+            <div class="slds-m-top_medium">
+                <lightning-button
+                    variant="brand"
+                    label="Calculate Score"
+                    title="Calculate Lead Score"
+                    onclick={handleCalculate}
+                ></lightning-button>
+            </div>
+
+        </div>
+    </lightning-card>
+</template>

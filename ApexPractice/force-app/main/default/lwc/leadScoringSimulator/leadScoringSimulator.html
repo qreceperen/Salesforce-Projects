@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Lead Scoring Simulator" icon-name="standard:lead">
+        <div class="slds-m-around_medium">
+            
+            <!-- Form Child Component -->
+            <c-lead-scoring-form oncalculate={handleCalculateFromChild}></c-lead-scoring-form>
+            
+            <!-- 🔥 Display Child Component - Parent passes data down -->
+            <c-lead-score-display 
+                total-score={totalScore}
+                demographic-score={demographicScore}
+                behavioral-score={behavioralScore}
+                engagement-score={engagementScore}
+                show-score={showScore}>
+            </c-lead-score-display>
+
+        </div>
+    </lightning-card>
+</template>
