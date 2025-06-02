@@ -39,6 +39,7 @@ public with sharing class LeadScoringService {
             lead.Behavioral_Score__c = behavioralScore;
             lead.Engagement_Score__c = engagementScore;
             lead.Lead_Score__c = demographicScore + behavioralScore + engagementScore;
+            lead.Score_Last_Updated__c = System.now();
         }
         
         // Note: Leads are updated by reference - no need to return anything
@@ -89,6 +90,7 @@ public with sharing class LeadScoringService {
         return false;
     }
 
+    // @TestVisible
     private static Map<String, Lead_Scoring_Rule__mdt> getActiveLeadScoringRules(){
         List<Lead_Scoring_Rule__mdt> allActiveRules = [
             SELECT DeveloperName, Field_API_Name__c, Field_Value__c, Score_Points__c, Category__c, Weight__c, Operator__c
