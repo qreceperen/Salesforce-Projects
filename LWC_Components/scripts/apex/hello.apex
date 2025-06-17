@@ -1,10 +1,3 @@
-List<Account> accountRecords = [SELECT Id FROM Account];
+List<Contact> contacts = ContactController.getContacts();
 
-List<Id> accountIds = new List<Id>();
-for(Account acc : accountRecords) {
-    accountIds.add(acc.Id);
-}
-
-AccountContactMapping acm = new AccountContactMapping(accountIds);
-
-acm.mapPhoneField();
+system.debug(contacts);
