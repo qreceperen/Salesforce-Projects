@@ -26,37 +26,48 @@ public abstract class BaseTriggerHandler {
     
     // Template method - defines the algorithm structure
     public void execute() {
+        System.debug('▶️ BaseTriggerHandler: executing trigger handler');
         if (isBypassed()) {
+            System.debug('⏭️ Handler is bypassed');
             return;
         }
-        
+
         try {
             if (context.isBefore) {
-                if (context.isInsert) executeStrategy('beforeInsert');
-                if (context.isUpdate) executeStrategy('beforeUpdate');
-                if (context.isDelete) executeStrategy('beforeDelete');
+                if (context.isInsert) {
+                    System.debug('🔁 Strategy = beforeInsert');
+                    executeStrategy('beforeInsert');
+                }
             }
-            
+
             if (context.isAfter) {
-                if (context.isInsert) executeStrategy('afterInsert');
-                if (context.isUpdate) executeStrategy('afterUpdate');
-                if (context.isDelete) executeStrategy('afterDelete');
-                if (context.isUndelete) executeStrategy('afterUndelete');
+                if (context.isInsert) {
+                    System.debug('🔁 Strategy = afterInsert');
+                    executeStrategy('afterInsert');
+                }
             }
         } catch (Exception e) {
             handleException(e);
         }
+        System.debug('⚡ Phase: ' + (context.isBefore ? 'Before' : 'After') + ' / Insert=' + context.isInsert + ' / Update=' + context.isUpdate);
+
     }
+
     
     // Abstract method - subclasses must implement
     protected abstract void setStrategies();
     
     private void executeStrategy(String operation) {
+        System.debug('🔎 Looking for strategy: ' + operation);
         ITriggerStrategy strategy = strategies.get(operation);
         if (strategy != null) {
+            System.debug('✅ Found strategy for: ' + operation);
             strategy.execute();
+        } else {
+            System.debug('❌ No strategy defined for: ' + operation);
         }
     }
+
     
     protected void addStrategy(String operation, ITriggerStrategy strategy) {
         strategies.put(operation, strategy);

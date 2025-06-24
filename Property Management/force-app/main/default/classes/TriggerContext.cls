@@ -18,6 +18,7 @@ public class TriggerContext {
     private static TriggerContext instance;
     
     private TriggerContext() {
+         System.debug('⚙️ Constructing TriggerContext');
         this.newRecords = Trigger.new;
         this.oldRecords = Trigger.old;
         this.newMap = Trigger.newMap;

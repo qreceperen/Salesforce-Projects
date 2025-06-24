@@ -12,7 +12,7 @@ public with sharing class PropertyValidationStrategy implements ITriggerStrategy
         Set<String> codes = new Set<String>();
         for(Property__c prop : properties) {
             if(String.isBlank(prop.Property_Code__c)){
-                prop.addError('Property Code is required for: ' + prop.Name);
+                prop.Property_Code__c.addError('Property Code is required for: ' + prop.Name);
                 continue;
             }
             if (codes.contains(prop.Property_Code__c.toUpperCase())) {
