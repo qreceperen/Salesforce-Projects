@@ -12,7 +12,7 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>User__c</field>
+                <field>Property_Manager__c</field>
             </layoutItems>
         </layoutColumns>
         <layoutColumns>

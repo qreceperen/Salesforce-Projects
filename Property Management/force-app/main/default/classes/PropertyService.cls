@@ -43,7 +43,7 @@ public class PropertyService {
             unitsByProperty.get(unit.Property__c).add(unit);
         }
         
-        for (Maintenance_Request__c req : [SELECT Id, Property__c, Status__c 
+        for (Maintenance_Request__c req : [SELECT Id, Property__c, Status__c, Description__c
                                          FROM Maintenance_Request__c 
                                          WHERE Property__c IN :propertyIds AND Status__c != 'Completed']) {
             if (!maintenanceByProperty.containsKey(req.Property__c)) {
