@@ -1,3 +1,5 @@
-Property__c prop = [SELECT Id, Status__c FROM Property__c LIMIT 1];
-prop.Status__c = 'Inactive';
-update prop;
+List<Property__c> properties = PrpertyServiceController.getAllProperties();
+
+for(Property__c prop : properties){
+    system.debug('Property ' + prop);
+}

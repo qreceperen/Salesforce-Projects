@@ -68,10 +68,16 @@
                             <value>NAME</value>
                         </valueListItems>
                         <valueListItems>
+                            <value>Unit_Number__c</value>
+                        </valueListItems>
+                        <valueListItems>
                             <value>Status__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>Bedrooms__c</value>
+                        </valueListItems>
+                        <valueListItems>
+                            <value>Monthly_Rent__c</value>
                         </valueListItems>
                     </valueList>
                 </componentInstanceProperties>

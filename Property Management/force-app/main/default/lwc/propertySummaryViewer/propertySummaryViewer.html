@@ -1,0 +1,22 @@
+<template>
+  <lightning-card title="Property Summary">
+    <template lwc:if={displayedProperties}>
+      <lightning-datatable
+        key-field="Id"
+        data={displayedProperties}
+        columns={columns}
+        hide-checkbox-column>
+      </lightning-datatable>
+
+      <div class="slds-m-top_medium slds-align_absolute-center">
+        <lightning-button label="Previous" onclick={handlePrevious} disabled={isFirstPage}></lightning-button>
+        <span class="slds-m-horizontal_small">Page {currentPage} of {totalPages}</span>
+        <lightning-button label="Next" onclick={handleNext} disabled={isLastPage}></lightning-button>
+      </div>
+    </template>
+
+    <template lwc:if={error}>
+      <p class="slds-text-color_error">Error loading properties: {error}</p>
+    </template>
+  </lightning-card>
+</template>
