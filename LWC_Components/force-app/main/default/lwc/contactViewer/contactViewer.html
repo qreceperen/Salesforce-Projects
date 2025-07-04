@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Contact Viewer">
+        <div class="slds-m-around_medium">
+            <!-- 👇 Contact Picker as child -->
+            <c-contact-picker-lwc
+                contacts={contacts}
+                oncontactselect={handleContactSelected}>
+            </c-contact-picker-lwc>
+            
+            <!-- Passing selectedContact to child component -->
+            <template if:true={selectedContact}>
+                <c-contact-details-lwc contact={selectedContact}></c-contact-details-lwc>
+            </template>
+        </div>
+    </lightning-card>
+</template>
