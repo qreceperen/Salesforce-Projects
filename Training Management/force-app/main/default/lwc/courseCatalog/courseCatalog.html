@@ -1,0 +1,56 @@
+<template>
+    <lightning-card title="Training Course Catalog" icon-name="standard:education">
+
+        <!-- Search and Filter Controls -->
+        <div class="slds-p-horizontal_medium slds-p-top_medium">
+            <div class="slds-grid slds-gutters slds-wrap">
+                <!-- Search Input -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3">
+                    <lightning-input
+                        type="search"
+                        label="Search Courses"
+                        placeholder="Search by course name or description..."
+                        onchange={handleSearchChange}>
+                    </lightning-input>
+                </div>
+
+                <!-- Category Filter -->
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3">
+                    <lightning-combobox
+                        label="Filter by Category"
+                        value={selectedCategory}
+                        options={categoryOptions}
+                        onchange={handleCategoryChange}>
+                    </lightning-combobox>
+                </div>
+            </div>
+        </div>
+
+        <!-- Course List Section -->
+        <div class="slds-p-around_medium">
+            <template if:true={filteredCourses}>
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <template for:each={filteredCourses} for:item="course">
+                        <div key={course.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                            <lightning-card title={course.Name} icon-name="standard:education">
+                                <div class="slds-p-horizontal_small slds-p-bottom_small">
+                                    <p><strong>Category:</strong> {course.Category__c}</p>
+                                    <p><strong>Duration:</strong> {course.Duration_Hours__c} hours</p>
+                                    <p><strong>Start:</strong> {course.Start_Date__c}</p>
+                                    <p><strong>End:</strong> {course.End_Date__c}</p>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template if:false={filteredCourses}>
+                <p class="slds-text-align_center slds-text-color_weak">
+                    🔄 Loading or no courses found...
+                </p>
+            </template>
+        </div>
+
+    </lightning-card>
+</template>
