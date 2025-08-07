@@ -5,6 +5,7 @@
     <columns>Category__c</columns>
     <columns>Instructor__c</columns>
     <columns>Status__c</columns>
+    <columns>Max_Capacity__c</columns>
     <filterScope>Everything</filterScope>
     <label>All</label>
 </ListView>

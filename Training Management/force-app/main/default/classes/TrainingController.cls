@@ -17,4 +17,21 @@ public with sharing class TrainingController {
             ORDER BY Start_Date__c
         ];
     }
+
+    @AuraEnabled
+    public static String enrollCustomerInCourse(Id courseId, Id customerId) {
+        try {
+            Training_Enrollment__c enrollment = new Training_Enrollment__c(
+                Customer__c = customerId,
+                Training_Course__c  = courseId,
+                Enrollment_Date__c = Date.today(),
+                Status__c = 'Enrolled'
+            );
+            insert enrollment;
+            return 'Success';
+
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
 }

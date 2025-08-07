@@ -39,6 +39,15 @@
                                     <p><strong>Start:</strong> {course.Start_Date__c}</p>
                                     <p><strong>End:</strong> {course.End_Date__c}</p>
                                 </div>
+                                <!-- Enroll Button -->
+                                <div class="slds-m-top_small slds-text-align_right">
+                                    <lightning-button 
+                                        variant="brand" 
+                                        label="Enroll Customer" 
+                                        onclick={handleEnrollClick} 
+                                        data-course-id={course.Id}>
+                                    </lightning-button>
+                                </div>
                             </lightning-card>
                         </div>
                     </template>
@@ -51,6 +60,13 @@
                 </p>
             </template>
         </div>
-
     </lightning-card>
+
+    <!-- Enrollment Modal Child -->
+    <c-enrollment-modal 
+        visible={showEnrollmentModal} 
+        course-id={selectedCourseId}
+        oncancel={handleModalCancel}
+        onenroll={handleEnrollFromChild}>
+    </c-enrollment-modal>
 </template>
