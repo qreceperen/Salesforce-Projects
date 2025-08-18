@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "sfdx": {
+      "command": "npx",
+      "args": ["@salesforce/mcp"],
+      "env": {
+        "SFDX_TARGET_ORG": "TrainingManagement"
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@
     <fullName>Progress_Percentage__c</fullName>
     <description>Completion percentage</description>
     <label>Progress Percentage</label>
-    <precision>3</precision>
+    <precision>5</precision>
     <required>false</required>
     <scale>2</scale>
     <trackTrending>false</trackTrending>

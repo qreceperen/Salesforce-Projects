@@ -1,0 +1,387 @@
+<!-- customerDashboard.html -->
+<template>
+    <div class="slds-grid slds-gutters slds-wrap">
+        
+        <!-- Customer Selector (if customerId not provided) -->
+        <template if:true={showCustomerSelector}>
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-card title="Select Customer" icon-name="standard:contact">
+                    <div class="slds-p-around_medium">
+                        <lightning-record-picker
+                            label="Choose Customer"
+                            placeholder="Search for a customer..."
+                            object-api-name="Contact"
+                            onchange={handleCustomerSelect}>
+                        </lightning-record-picker>
+                    </div>
+                </lightning-card>
+            </div>
+        </template>
+
+        <!-- Dashboard Content -->
+        <template if:true={hasData}>
+            
+            <!-- Statistics Cards Row -->
+            <div class="slds-col slds-size_1-of-1">
+                <div class="slds-grid slds-gutters slds-wrap">
+                    
+                    <!-- Enrollment Statistics -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                        <lightning-card title="Training Progress" icon-name="standard:dashboard">
+                            <div class="slds-p-around_medium slds-text-align_center">
+                                <div class="stat-number">{enrollmentStats.total}</div>
+                                <div class="stat-label">Total Enrollments</div>
+                                <div class="slds-p-top_small">
+                                    <lightning-progress-indicator 
+                                        current-step="completed" 
+                                        type="base" 
+                                        variant="base">
+                                        <lightning-progress-step 
+                                            label="Completed" 
+                                            value="completed">
+                                        </lightning-progress-step>
+                                    </lightning-progress-indicator>
+                                    <div class="slds-text-body_small slds-p-top_x-small">
+                                        {enrollmentStats.completionRate}% Completion Rate
+                                    </div>
+                                </div>
+                            </div>
+                        </lightning-card>
+                    </div>
+
+                    <!-- Active Enrollments -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                        <lightning-card title="Active Training" icon-name="standard:education">
+                            <div class="slds-p-around_medium slds-text-align_center">
+                                <div class="stat-number slds-text-color_success">{enrollmentStats.inProgress}</div>
+                                <div class="stat-label">In Progress</div>
+                                <div class="slds-p-top_small">
+                                    <lightning-icon icon-name="utility:forward" size="small"></lightning-icon>
+                                </div>
+                            </div>
+                        </lightning-card>
+                    </div>
+
+                    <!-- Completed Courses -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                        <lightning-card title="Completed" icon-name="standard:task2">
+                            <div class="slds-p-around_medium slds-text-align_center">
+                                <div class="stat-number slds-text-color_success">{enrollmentStats.completed}</div>
+                                <div class="stat-label">Courses Completed</div>
+                                <div class="slds-p-top_small">
+                                    <lightning-icon icon-name="utility:success" size="small"></lightning-icon>
+                                </div>
+                            </div>
+                        </lightning-card>
+                    </div>
+
+                    <!-- Certificates -->
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                        <lightning-card title="Certificates" icon-name="standard:certificate">
+                            <div class="slds-p-around_medium slds-text-align_center">
+                                <div class="stat-number">{certificateStats.total}</div>
+                                <div class="stat-label">Total Certificates</div>
+                                <template if:true={certificateStats.expiringSoon}>
+                                    <div class="slds-p-top_small">
+                                        <lightning-badge label={certificateStats.expiringSoon} variant="warning"></lightning-badge>
+                                        <div class="slds-text-body_small">Expiring Soon</div>
+                                    </div>
+                                </template>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content with Tabs -->
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-card>
+                    <lightning-tabset active-tab-value={activeTab} onactive={handleTabActive}>
+                        
+                        <!-- Enrollments Tab -->
+                        <lightning-tab label="My Enrollments" value="enrollments">
+                            <div class="slds-p-around_medium">
+                                <template if:true={hasEnrollments}>
+                                    <template for:each={enrollments} for:item="enrollment">
+                                        <div key={enrollment.Id} class="slds-box slds-theme_default slds-m-bottom_medium enrollment-card">
+                                            
+                                            <!-- Enrollment Header -->
+                                            <div class="slds-grid slds-gutters slds-wrap">
+                                                <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-3">
+                                                    <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+                                                        {enrollment.Training_Course__r.Name}
+                                                    </h3>
+                                                    <div class="slds-grid slds-gutters_x-small slds-text-body_small">
+                                                        <div class="slds-col">
+                                                            <lightning-icon icon-name="utility:event" size="xx-small"></lightning-icon>
+                                                            Enrolled: {enrollment.formattedEnrollmentDate}
+                                                        </div>
+                                                        <template if:true={enrollment.formattedCompletionDate}>
+                                                            <div class="slds-col">
+                                                                <lightning-icon icon-name="utility:success" size="xx-small"></lightning-icon>
+                                                                Completed: {enrollment.formattedCompletionDate}
+                                                            </div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-text-align_right">
+                                                    <lightning-badge label={enrollment.Status__c} variant={enrollment.statusVariant}></lightning-badge>
+                                                    <template if:true={enrollment.Grade__c}>
+                                                        <div class="slds-p-top_x-small">
+                                                            <span class="slds-text-heading_small">Grade: {enrollment.Grade__c}</span>
+                                                        </div>
+                                                    </template>
+                                                </div>
+                                            </div>
+
+                                            <!-- Progress Bar -->
+                                            <template if:true={enrollment.isInProgress}>
+                                                <div class="slds-p-top_medium">
+                                                    <div class="slds-grid slds-gutters slds-grid_vertical-align-center">
+                                                        <div class="slds-col slds-grow">
+                                                            <div class="slds-progress-bar" aria-valuemin="0" aria-valuemax="100" 
+                                                                 aria-valuenow={enrollment.Progress_Percentage__c} role="progressbar">
+                                                                <span class={enrollment.progressClass} 
+                                                                      style={enrollment.progressStyle}>
+                                                                    <span class="slds-assistive-text">Progress: {enrollment.Progress_Percentage__c}%</span>
+                                                                </span>
+                                                            </div>
+                                                            <div class="slds-text-body_small slds-p-top_x-small">
+                                                                Progress: {enrollment.Progress_Percentage__c}%
+                                                            </div>
+                                                        </div>
+                                                        <div class="slds-col slds-no-flex">
+                                                            <lightning-button 
+                                                                variant="neutral" 
+                                                                label="Update Progress" 
+                                                                size="small"
+                                                                onclick={handleUpdateProgress}
+                                                                data-enrollment-id={enrollment.Id}>
+                                                            </lightning-button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </template>
+
+                                            <!-- Comments -->
+                                            <template if:true={enrollment.Comments__c}>
+                                                <div class="slds-p-top_small">
+                                                    <div class="slds-text-body_small slds-text-color_weak">
+                                                        <lightning-icon icon-name="utility:comments" size="xx-small"></lightning-icon>
+                                                        {enrollment.Comments__c}
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </template>
+
+                                <template if:false={hasEnrollments}>
+                                    <div class="slds-text-align_center slds-p-vertical_large">
+                                        <lightning-icon icon-name="utility:education" size="large"></lightning-icon>
+                                        <h3 class="slds-text-heading_medium slds-p-top_medium">No Enrollments Found</h3>
+                                        <p class="slds-text-body_regular">This customer hasn't enrolled in any courses yet.</p>
+                                    </div>
+                                </template>
+                            </div>
+                        </lightning-tab>
+
+                        <!-- Certificates Tab -->
+                        <lightning-tab label="Certificates" value="certificates">
+                            <div class="slds-p-around_medium">
+                                <template if:true={hasCertificates}>
+                                    <div class="slds-grid slds-gutters slds-wrap">
+                                        <template for:each={certificates} for:item="certificate">
+                                            <div key={certificate.Id} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                                                <div class="slds-card slds-p-around_small certificate-card">
+                                                    
+                                                    <!-- Certificate Header -->
+                                                    <div class="slds-media slds-media_center slds-p-bottom_small">
+                                                        <div class="slds-media__figure">
+                                                            <lightning-icon icon-name="standard:certificate" size="medium"></lightning-icon>
+                                                        </div>
+                                                        <div class="slds-media__body">
+                                                            <h3 class="slds-text-heading_small">{certificate.Name}</h3>
+                                                            <p class="slds-text-body_small slds-text-color_weak">
+                                                                {certificate.Training_Course__r.Name}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Certificate Details -->
+                                                    <div class="slds-p-bottom_small">
+                                                        <div class="slds-text-body_small">
+                                                            <div class="slds-grid slds-gutters_x-small">
+                                                                <div class="slds-col slds-size_1-of-2">
+                                                                    <strong>Issued:</strong><br/>
+                                                                    {certificate.formattedIssueDate}
+                                                                </div>
+                                                                <div class="slds-col slds-size_1-of-2">
+                                                                    <strong>Expires:</strong><br/>
+                                                                    {certificate.formattedExpiryDate}
+                                                                </div>
+                                                            </div>
+                                                            <div class="slds-p-top_x-small">
+                                                                <strong>Certificate #:</strong> {certificate.Certificate_Number__c}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Certificate Status -->
+                                                    <div class="slds-border_top slds-p-top_small">
+                                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                                            <div class="slds-col slds-grow">
+                                                                <lightning-badge 
+                                                                    label={certificate.Status__c} 
+                                                                    variant={certificate.statusVariant}>
+                                                                </lightning-badge>
+                                                            </div>
+                                                            <template if:true={certificate.isExpiringSoon}>
+                                                                <div class="slds-col slds-no-flex">
+                                                                    <div class="slds-text-body_small slds-text-color_error">
+                                                                        {certificate.daysUntilExpiry}
+                                                                    </div>
+                                                                </div>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </template>
+
+                                <template if:false={hasCertificates}>
+                                    <div class="slds-text-align_center slds-p-vertical_large">
+                                        <lightning-icon icon-name="standard:certificate" size="large"></lightning-icon>
+                                        <h3 class="slds-text-heading_medium slds-p-top_medium">No Certificates</h3>
+                                        <p class="slds-text-body_regular">Complete courses to earn certificates.</p>
+                                    </div>
+                                </template>
+                            </div>
+                        </lightning-tab>
+
+                        <!-- Upcoming Courses Tab -->
+                        <lightning-tab label="Upcoming Courses" value="upcoming">
+                            <div class="slds-p-around_medium">
+                                <template if:true={hasUpcomingCourses}>
+                                    <template for:each={upcomingCourses} for:item="course">
+                                        <div key={course.Id} class="slds-box slds-theme_default slds-m-bottom_medium">
+                                            <div class="slds-grid slds-gutters slds-grid_vertical-align-center">
+                                                <div class="slds-col slds-grow">
+                                                    <h3 class="slds-text-heading_small">{course.Name}</h3>
+                                                    <div class="slds-text-body_small slds-text-color_weak">
+                                                        <lightning-icon icon-name="utility:event" size="xx-small"></lightning-icon>
+                                                        {course.formattedStartDate} - {course.formattedEndDate}
+                                                    </div>
+                                                    <div class="slds-text-body_small">
+                                                        <lightning-icon icon-name="utility:clock" size="xx-small"></lightning-icon>
+                                                        {course.Duration_Hours__c} hours • {course.Category__c}
+                                                    </div>
+                                                </div>
+                                                <div class="slds-col slds-no-flex">
+                                                    <div class="slds-text-body_small slds-text-align_right">
+                                                        <strong>{course.daysUntilStart}</strong>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </template>
+
+                                <template if:false={hasUpcomingCourses}>
+                                    <div class="slds-text-align_center slds-p-vertical_large">
+                                        <lightning-icon icon-name="utility:clock" size="large"></lightning-icon>
+                                        <h3 class="slds-text-heading_medium slds-p-top_medium">No Upcoming Courses</h3>
+                                        <p class="slds-text-body_regular">No scheduled courses for this customer.</p>
+                                    </div>
+                                </template>
+                            </div>
+                        </lightning-tab>
+                    </lightning-tabset>
+                </lightning-card>
+            </div>
+        </template>
+
+        <!-- No Customer Selected -->
+        <template if:false={hasData}>
+            <template if:false={showCustomerSelector}>
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-text-align_center slds-p-vertical_large">
+                        <lightning-icon icon-name="utility:user" size="large"></lightning-icon>
+                        <h3 class="slds-text-heading_medium slds-p-top_medium">No Customer Data</h3>
+                        <p class="slds-text-body_regular">Select a customer to view their training dashboard.</p>
+                    </div>
+                </div>
+            </template>
+        </template>
+    </div>
+
+    <!-- Progress Update Modal -->
+    <template if:true={showProgressModal}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" 
+                            title="Close" onclick={closeProgressModal}>
+                        <lightning-icon icon-name="utility:close" size="small"></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 class="slds-text-heading_medium">Update Course Progress</h2>
+                </header>
+                
+                <div class="slds-modal__content slds-p-around_medium">
+                    <template if:true={selectedEnrollment.Training_Course__r}>
+                        <div class="slds-p-bottom_medium">
+                            <h3 class="slds-text-heading_small">{selectedEnrollment.Training_Course__r.Name}</h3>
+                            <p class="slds-text-body_small slds-text-color_weak">
+                                Current Progress: {selectedEnrollment.Progress_Percentage__c}%
+                            </p>
+                        </div>
+                    </template>
+                    
+                    <lightning-slider
+                        label="Progress Percentage"
+                        value={progressValue}
+                        min="0"
+                        max="100"
+                        step="5"
+                        onchange={handleProgressChange}>
+                    </lightning-slider>
+                    
+                    <div class="slds-p-top_small">
+                        <div class="slds-progress-bar" aria-valuemin="0" aria-valuemax="100" 
+                             aria-valuenow={progressValue} role="progressbar">
+                            <span class="slds-progress-bar__value" style={progressBarStyle}>
+                                <span class="slds-assistive-text">Progress: {progressValue}%</span>
+                            </span>
+                        </div>
+                        <div class="slds-text-body_small slds-p-top_x-small slds-text-align_center">
+                            {progressValue}% Complete
+                        </div>
+                    </div>
+                </div>
+                
+                <footer class="slds-modal__footer">
+                    <lightning-button 
+                        variant="neutral" 
+                        label="Cancel" 
+                        onclick={closeProgressModal}>
+                    </lightning-button>
+                    <lightning-button 
+                        variant="brand" 
+                        label="Save Progress" 
+                        onclick={handleSaveProgress}
+                        disabled={isLoading}>
+                    </lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- Loading Spinner -->
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+</template>

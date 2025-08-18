@@ -30,6 +30,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Backend Pattern:**
 - `TrainingController.cls` - Single Apex controller exposing @AuraEnabled methods
+- `CertificateController.cls` - Dedicated controller for certificate operations
 - Methods are cacheable where appropriate for performance
 - Implements "with sharing" security model
 - All customer interactions go through Contact object
@@ -37,6 +38,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 **Frontend Architecture:**
 - `courseCatalog` LWC - Main course browser with search/filtering
 - `enrollmentModal` LWC - Customer selection and enrollment workflow  
+- `customerDashboard` LWC - Customer training overview with stats and progress tracking
 - Parent-child communication via custom events
 - Uses @wire decorators for reactive data binding to Apex methods
 
@@ -44,6 +46,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 1. Course display: `getActiveCourses()` → courseCatalog component → course cards
 2. Enrollment: courseCatalog → enrollmentModal → `enrollCustomerInCourse()` → refresh
 3. Customer search: enrollmentModal → `getCustomers()` with SOQL LIKE search
+4. Customer dashboard: `getCustomerEnrollments()` + `getCustomerCertificates()` → progress display
 
 ## Project Structure
 
@@ -75,3 +78,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Salesforce CLI (sfdx)
 - Node.js with npm
 - VS Code with Salesforce Extension Pack recommended
+
+## Salesforce DX MCP Integration
+
+**Setup:**
+- MCP Server: `@salesforce/mcp@0.17.0` (already installed globally)
+- Configuration: `.mcp-config.json` configures MCP to use "TrainingManagement" scratch org
+- Default org: `TrainingManagement` (scratch org, expires 2025-08-28)
+
+**Available MCP Tools:**
+- Salesforce metadata operations (retrieve, deploy, describe)
+- SOQL query execution and data manipulation
+- Apex code execution and testing
+- Org management and configuration
+- All standard SFDX CLI functionality through MCP interface
+
+**Usage:**
+- MCP tools are automatically available in Claude Code sessions
+- Use MCP tools for direct Salesforce operations without manual CLI commands
+- All operations target the configured default org unless otherwise specified

@@ -1,0 +1,34 @@
+/* courseCatalog.css */
+
+.course-card {
+    height: 100%;
+    transition: box-shadow 0.2s ease-in-out;
+    border: 1px solid #e5e5e5;
+}
+
+.course-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    transition: all 0.2s ease-in-out;
+}
+
+.course-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+    max-height: 4.2em;
+}
+
+.slds-badge {
+    font-size: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .course-card {
+        margin-bottom: 1rem;
+    }
+}
