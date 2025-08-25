@@ -1,8 +1,22 @@
-Id customerId = '003D500001BKRUYIA5'; // Replace with a real Contact Id
+System.debug('--- SETUP: create a course (fires before/after insert) ---');
+Training_Course__c c = new Training_Course__c(Name = 'Bypass Demo');
+insert c;
+// Expect to see: "TrainingCourseHandler: Before Insert" in the log
 
-Map<String, Object> stats = TrainingController.getCustomerTrainingStats(customerId);
+System.debug('--- BASELINE: normal update (should run handler) ---');
+c.Name = 'Bypass Demo v2';
+update c;
+// Expect to see: "TrainingCourseHandler: Before Update"
 
-for (String key : stats.keySet()) {
-    System.debug(key + ' => ' + stats.get(key));
-}
+System.debug('--- BYPASS ON: skip the handler ---');
+TriggerHandler.bypass('TrainingCourseHandler');
+c.Name = 'Bypass Demo v3';
+update c;
+// Expect to see: NO "TrainingCourseHandler: Before Update" this time
+// (Handler is bypassed; execute() returns early.)
 
+System.debug('--- BYPASS OFF: restore normal behavior ---');
+TriggerHandler.clearBypass('TrainingCourseHandler');
+c.Name = 'Bypass Demo v4';
+update c;
+// Expect to see: "TrainingCourseHandler: Before Update" again
