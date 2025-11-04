@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Account_Type__c</fullName>
+    <label>Account Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Business</fullName>
+                <default>false</default>
+                <label>Business</label>
+            </value>
+            <value>
+                <fullName>Individual</fullName>
+                <default>false</default>
+                <label>Individual</label>
+            </value>
+            <value>
+                <fullName>Household - Business</fullName>
+                <default>false</default>
+                <label>Household - Business</label>
+            </value>
+            <value>
+                <fullName>Household - Individual</fullName>
+                <default>false</default>
+                <label>Household - Individual</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
+
+
+
+
+
+
+
+
+
