@@ -11,7 +11,7 @@ public without sharing class DLA_ProcessHandler {
         migrationManager = manager;
     }
     
-    private void migrateDemographics() {
+    private void executeMigrations() {
         migrationManager.doMigration();
         
         dlaWrapper.getDLA().Migrated_to_nCino__c = true;
@@ -42,7 +42,7 @@ public without sharing class DLA_ProcessHandler {
             DLA_ProcessHandler proc = new DLA_ProcessHandler(wrapper, manager);
 
             if(dla.Ready_to_Migrate__c && !dla.Migrated_to_nCino__c) {
-                proc.migrateDemographics();
+                proc.executeMigrations();
                 result.put('STATUS', 'SUCCESS');
                 result.put('Message', 'Demographics migrated successfully!');
             } else {
